@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GK ACADEMY | Gateway of Knowledge</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            --dark-navy: #0f172a;
+            --soft-bg: #f8fafc;
+            --nav-height: 80px;
+            /* Fixed height for calculation */
+        }
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--soft-bg);
+            color: #334155;
+        }
+
+        /* --- Modern Navbar --- */
+        .navbar {
+            background: rgba(255, 255, 255, 0.8) !important;
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 0;
+            /* Adjusted for fixed height */
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+        }
+
+        .brand-text {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        /* --- Carousel Enhancements --- */
+        .hero-slide {
+            height: calc(100vh - var(--nav-height));
+            /* Covers remaining window height */
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-title {
+            font-weight: 800;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+        }
+
+        .floating-img {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .gradient-span {
+            background: linear-gradient(to right, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Modern Slider Controls */
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 5%;
+            opacity: 0.8;
+        }
+
+        .carousel-indicators {
+            opacity: 0.2;
+        }
+
+        .carousel-indicators [data-bs-target] {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin: 0 6px;
+        }
+
+        /* --- Buttons --- */
+        .btn-primary {
+            background: var(--primary-gradient);
+            border: none;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Light subtle background + better spacing */
+        #courses {
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+            /* or use a very light color: background: #f9fafb; */
+        }
+
+        /* Main heading block */
+        #courses .text-center.mb-5 {
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        #courses h6.text-primary.text-uppercase {
+            font-size: 1.05rem;
+            letter-spacing: 2.5px;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #6366f1 !important;
+            /* indigo-600 */
+        }
+
+        #courses h2.fw-extrabold {
+            font-weight: 800;
+            font-size: clamp(2.25rem, 5vw, 3.5rem);
+            line-height: 1.1;
+            background: linear-gradient(90deg, #4f46e5, #7c3aed, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        /* Category titles - Engineering Courses, English Courses, etc. */
+        #courses h3.fw-bold.display-6 {
+            font-weight: 800;
+            font-size: clamp(1.875rem, 4.5vw, 2.75rem);
+            margin: 3.5rem 0 1.75rem;
+            color: #1e293b;
+            /* slate-900 */
+            position: relative;
+            padding-left: 0;
+        }
+
+        /* Left colored bar accent (popular modern look) */
+        #courses h3.fw-bold.display-6::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 60%;
+            background: linear-gradient(to bottom, #6366f1, #a855f7);
+            border-radius: 0 6px 6px 0;
+        }
+
+        #courses h3.fw-bold.display-6 {
+            background: linear-gradient(120deg, #4f46e5, #a855f7, #ec4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            background-size: 200% auto;
+            animation: textGradientFlow 7s linear infinite;
+        }
+
+        @keyframes textGradientFlow {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        /* Card hover lift + shadow enhancement */
+        .course-card {
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: none;
+            border-radius: 1rem;
+            overflow: hidden;
+            background: white;
+        }
+
+        .course-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.18) !important;
+        }
+
+        .card.course-card {
+            height: 100%;
+        }
+
+        /* Optional: fade-in animation when scrolling into view */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .course-card {
+            animation: fadeUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            #courses h3.fw-bold.display-6 {
+                font-size: 1.75rem;
+                margin: 2.5rem 0 1.25rem;
+            }
+
+            #courses h2.display-5 {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* For the animated gradient category badge */
+        @keyframes textGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Optional: nicer spacing & shadow on cards */
+        .course-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12) !important;
+        }
+
+        .badge[style*="--tw-gradient-stops"] {
+            background: linear-gradient(90deg, var(--tw-gradient-stops));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            background-size: 200%;
+            animation: textGradient 4.5s ease infinite;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .badge[style*="--tw-gradient-stops"]:hover {
+            transform: scale(1.05);
+            border-color: rgba(99, 102, 241, 0.6);
+        }
+
+        @keyframes textGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* --- Live Indicator Animation --- */
+        .live-badge {
+            animation: livePulse 2.4s ease-in-out infinite;
+        }
+
+        .live-dot {
+            width: 10px;
+            height: 10px;
+            background: #ef4444;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.45);
+            animation: dotPulse 2s infinite;
+        }
+
+        @keyframes livePulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            }
+
+            50% {
+                transform: scale(1.07);
+                box-shadow: 0 6px 20px rgba(239, 68, 68, 0.25);
+            }
+        }
+
+        @keyframes dotPulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 8px rgba(239, 68, 68, 0);
+            }
+        }
+
+        .live-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #ef4444;
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 8px rgba(239, 68, 68, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+            }
+        }
+
+        .enroll-fancy {
+            position: relative;
+            overflow: hidden;
+            /* background-image: linear-gradient(90deg, #4f46e5 0%, #7c3aed 50%, #ec4899 100%); */
+            background-size: 300% 300%;
+            background-position: 0% 50%;
+            transition: background-position 0.8s ease, transform 0.25s ease;
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.35);
+        }
+
+        .enroll-fancy::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+            pointer-events: none;
+        }
+
+        .enroll-fancy:hover {
+            background-position: 100% 50%;
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 12px 30px rgba(99, 102, 241, 0.5);
+        }
+
+        .enroll-fancy:focus-visible {
+            background-position: 100% 50%;
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 12px 30px rgba(99, 102, 241, 0.5);
+        }
+
+        .enroll-fancy:hover::after {
+            transform: translateX(100%);
+        }
+
+        .enroll-fancy:active {
+            transform: scale(0.96) translateY(1px);
+            transition: transform 0.1s ease;
+        }
+
+        /* --- Updated Modern Footer --- */
+        .main-footer {
+            background-color: var(--dark-navy);
+            color: rgba(255, 255, 255, 0.8);
+            padding-top: 80px;
+            border-top: 4px solid #6366f1;
+        }
+
+        .footer-logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .footer-heading {
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: #818cf8;
+            padding-left: 5px;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            border-radius: 10px;
+            margin-right: 10px;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: var(--primary-gradient);
+            transform: translateY(-3px);
+        }
+
+        .contact-info i {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-right: 10px;
+            width: 20px;
+        }
+
+        .footer-bottom {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px 0;
+            margin-top: 60px;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="./icon6.png" alt="Logo" width="45" height="45" class="me-2 rounded-3">
+                <div class="d-flex flex-column">
+                    <span class="brand-text lh-1" style="font-size: 1.4rem;">GK ACADEMY</span>
+                    <span class="text-muted fw-medium mt-1"
+                        style="font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px;">Gateway of
+                        Knowledge</span>
+                </div>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link fw-semibold px-3" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link fw-semibold px-3" href="#">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link fw-semibold px-3" href="#">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link fw-semibold px-3" href="#">Mentors</a></li>
+                    <li class="nav-item"><a class="btn btn-primary text-white ms-lg-4 shadow-sm" href="#">Free Demo</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="mainHeroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#mainHeroCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#mainHeroCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#mainHeroCarousel" data-bs-slide-to="2"></button>
+        </div>
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="hero-slide" style="background: var(--dark-navy);">
+                    <div class="container">
+                        <div class="row align-items-center text-center text-lg-start">
+                            <div class="col-lg-7 text-white">
+                                <span class="badge mb-3 py-2 px-3"
+                                    style="background: rgba(255,255,255,0.1); color: #818cf8;">🚀 NEXT GEN
+                                    LEARNING</span>
+                                <h1 class="hero-title mb-4">Master <span class="gradient-span">MERN Stack</span>
+                                    Development</h1>
+                                <p class="lead opacity-75 mb-5 fs-5">Accelerate your career with project-based learning
+                                    and industry expert mentorship.</p>
+                                <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
+                                    <button class="btn btn-primary btn-lg">Explore Curriculum</button>
+                                    <button class="btn btn-outline-light btn-lg">Watch Demo</button>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 d-none d-lg-block">
+                                <img src="https://placehold.co/500x400/orange/white?text=Upgrade+Skills"
+                                    class="img-fluid rounded-4 shadow-lg border border-secondary floating-img"
+                                    alt="Hero">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="hero-slide" style="background: linear-gradient(45deg, #1e1b4b, #312e81);">
+                    <div class="container">
+                        <div class="row align-items-center justify-content-center text-center">
+                            <div class="col-lg-9 text-white">
+                                <h1 class="hero-title mb-4">Join <span class="gradient-span">10,000+</span> Students
+                                    Today</h1>
+                                <p class="lead opacity-75 mb-5 fs-4">Join India's most loved community for developers
+                                    and designers.</p>
+                                <button class="btn btn-primary btn-lg px-5">Get Started Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="hero-slide" style="background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);">
+                    <div class="container text-center text-white">
+                        <span class="badge bg-success mb-3 py-2 px-3">💼 100% PLACEMENT ASSISTANCE</span>
+                        <h1 class="hero-title mb-4">Your Dream Job is <span class="gradient-span">Just One Course</span>
+                            Away</h1>
+                        <p class="lead opacity-75 mb-5 fs-4">We help you get hired by top tech giants like Google,
+                            Amazon, and Meta.</p>
+                        <a href="#" class="btn btn-primary btn-lg">View Success Stories</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#mainHeroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+
+        <button class="carousel-control-next" type="button" data-bs-target="#mainHeroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+
+    <section id="courses" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5 pt-4">
+                <h6 class="text-primary fw-bold text-uppercase mb-2">Programs</h6>
+                <h2 class="fw-extrabold display-6">What We Offer</h2>
+            </div>
+            <h3 class="fw-bold display-6 mb-4">Engineering Courses</h3>
+            <div class="row g-4 mb-5">
+                <div class="col-md-4">
+                    <div class="card course-card h-100 shadow-sm">
+                        <div class="position-relative">
+                            <!-- LIVE badge -->
+                            <div class="position-absolute top-0 end-0 m-3 z-2">
+                                <div
+                                    class="live-badge d-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-white shadow fw-bold">
+                                    <span class="live-dot"></span>
+                                    <span class="text-danger small" style="letter-spacing: 0.6px;">LIVE BATCH</span>
+                                </div>
+                            </div>
+
+                            <img src="https://placehold.co/600x400/indigo/white?text=MERN+Full+Stack"
+                                class="card-img-top" alt="Course">
+                            <!-- <span
+                                class="badge bg-white text-dark position-absolute top-0 end-0 m-3 shadow-sm fw-bold">₹14,999</span> -->
+
+                        </div>
+                        <div class="card-body p-4">
+                            <!-- Category badge -->
+                            <span class="badge rounded-pill px-3 py-2 mb-3"
+                                style="--tw-gradient-stops: #6366f1, #a855f7, #d946ef;">
+                                Web Development
+                            </span>
+
+                            <h5 class="card-title fw-bold mb-3">MERN Full Stack Mastery</h5>
+                            <p class="text-muted small mb-4">Master MongoDB, Express, React, and Node.js with 10+ real
+                                projects.</p>
+                            <!-- <div class="pt-3 border-top d-flex justify-content-between align-items-center">
+                                <span class="text-warning small fw-bold">★ 4.9 (2.3k reviews)</span>
+                                <a href="#" class="btn btn-primary btn-sm">Enroll</a>
+                            </div> -->
+
+                            <div class="pt-3 border-top d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <div class="badge"
+                                        style="background: #eef2ff; color: #6366f1; border-radius: 6px; font-size: 0.7rem;">
+                                        6 Months</div>
+                                </div>
+                                <!-- <a href="#" class="btn btn-primary btn-sm">Enroll</a> -->
+                                <a href="#" class="btn btn-primary btn-sm enroll-fancy">Enroll Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card course-card h-100 shadow-sm">
+                        <div class="position-relative">
+                            <!-- LIVE badge -->
+                            <div class="position-absolute top-0 end-0 m-3 z-2">
+                                <div
+                                    class="live-badge d-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-white shadow fw-bold">
+                                    <span class="live-dot"></span>
+                                    <span class="text-danger small" style="letter-spacing: 0.6px;">LIVE BATCH</span>
+                                </div>
+                            </div>
+
+                            <img src="https://placehold.co/600x400/indigo/white?text=MERN+Full+Stack"
+                                class="card-img-top" alt="Course">
+
+                        </div>
+                        <div class="card-body p-4">
+                            <!-- Category badge -->
+                            <span class="badge rounded-pill px-3 py-2 mb-3"
+                                style="--tw-gradient-stops: #6366f1, #a855f7, #d946ef;">
+                                Web Development
+                            </span>
+
+                            <h5 class="card-title fw-bold mb-3">MERN Full Stack Mastery</h5>
+                            <p class="text-muted small mb-4">Master MongoDB, Express, React, and Node.js with 10+ real
+                                projects.</p>
+
+                            <div class="pt-3 border-top d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <div class="badge"
+                                        style="background: #eef2ff; color: #6366f1; border-radius: 6px; font-size: 0.7rem;">
+                                        6 Months
+                                    </div>
+                                </div>
+
+                                <a href="#" class="btn btn-primary btn-sm enroll-fancy">Enroll Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="fw-bold display-6 mb-4">English Language Courses</h3>
+            <div class="row g-4 mb-5">
+
+                <div class="col-md-4">
+                    <div class="card course-card h-100 shadow-sm">
+                        <div class="position-relative">
+                            <!-- LIVE badge -->
+                            <div class="position-absolute top-0 end-0 m-3 z-2">
+                                <div
+                                    class="live-badge d-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-white shadow fw-bold">
+                                    <span class="live-dot"></span>
+                                    <span class="text-danger small" style="letter-spacing: 0.6px;">LIVE BATCH</span>
+                                </div>
+                            </div>
+
+                            <img src="https://placehold.co/600x400/indigo/white?text=American+English"
+                                class="card-img-top" alt="Course">
+
+                        </div>
+                        <div class="card-body p-4">
+                            <!-- Category badge -->
+                            <span class="badge rounded-pill px-3 py-2 mb-3"
+                                style="--tw-gradient-stops: #6366f1, #a855f7, #d946ef;">
+                                Beginner to Advance
+                            </span>
+
+                            <h5 class="card-title fw-bold mb-3">MERN Full Stack Mastery</h5>
+                            <p class="text-muted small mb-4">Master MongoDB, Express, React, and Node.js with 10+ real
+                                projects.</p>
+
+                            <div class="pt-3 border-top d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <div class="badge"
+                                        style="background: #eef2ff; color: #6366f1; border-radius: 6px; font-size: 0.7rem;">
+                                        6 Months
+                                    </div>
+                                </div>
+
+                                <a href="#" class="btn btn-primary btn-sm enroll-fancy">Enroll Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card course-card h-100 shadow-sm">
+                        <div class="position-relative">
+                            <!-- LIVE badge -->
+                            <div class="position-absolute top-0 end-0 m-3 z-2">
+                                <div
+                                    class="live-badge d-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-white shadow fw-bold">
+                                    <span class="live-dot"></span>
+                                    <span class="text-danger small" style="letter-spacing: 0.6px;">LIVE BATCH</span>
+                                </div>
+                            </div>
+
+                            <img src="https://placehold.co/600x400/indigo/white?text=British+English"
+                                class="card-img-top" alt="Course">
+
+                        </div>
+                        <div class="card-body p-4">
+                            <!-- Category badge -->
+                            <span class="badge rounded-pill px-3 py-2 mb-3"
+                                style="--tw-gradient-stops: #6366f1, #a855f7, #d946ef;">
+                                Beginner to Advance
+                            </span>
+
+                            <h5 class="card-title fw-bold mb-3">MERN Full Stack Mastery</h5>
+                            <p class="text-muted small mb-4">Master MongoDB, Express, React, and Node.js with 10+ real
+                                projects.</p>
+
+                            <div class="pt-3 border-top d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <div class="badge"
+                                        style="background: #eef2ff; color: #6366f1; border-radius: 6px; font-size: 0.7rem;">
+                                        6 Months
+                                    </div>
+                                </div>
+
+                                <a href="#" class="btn btn-primary btn-sm enroll-fancy">Enroll Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card course-card h-100 shadow-sm">
+                        <div class="position-relative">
+                            <!-- LIVE badge -->
+                            <div class="position-absolute top-0 end-0 m-3 z-2">
+                                <div
+                                    class="live-badge d-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-white shadow fw-bold">
+                                    <span class="live-dot"></span>
+                                    <span class="text-danger small" style="letter-spacing: 0.6px;">LIVE BATCH</span>
+                                </div>
+                            </div>
+
+                            <img src="https://placehold.co/600x400/indigo/white?text=Business+Communication"
+                                class="card-img-top" alt="Course">
+
+                        </div>
+                        <div class="card-body p-4">
+                            <!-- Category badge -->
+                            <span class="badge rounded-pill px-3 py-2 mb-3"
+                                style="--tw-gradient-stops: #6366f1, #a855f7, #d946ef;">
+                                Business Oriented Skills
+                            </span>
+
+                            <h5 class="card-title fw-bold mb-3">MERN Full Stack Mastery</h5>
+                            <p class="text-muted small mb-4">Master MongoDB, Express, React, and Node.js with 10+ real
+                                projects.</p>
+
+                            <div class="pt-3 border-top d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <div class="badge"
+                                        style="background: #eef2ff; color: #6366f1; border-radius: 6px; font-size: 0.7rem;">
+                                        6 Months
+                                    </div>
+                                </div>
+
+                                <a href="#" class="btn btn-primary btn-sm enroll-fancy">Enroll Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card course-card h-100 shadow-sm">
+                        <div class="position-relative">
+                            <!-- LIVE badge -->
+                            <div class="position-absolute top-0 end-0 m-3 z-2">
+                                <div
+                                    class="live-badge d-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-white shadow fw-bold">
+                                    <span class="live-dot"></span>
+                                    <span class="text-danger small" style="letter-spacing: 0.6px;">LIVE BATCH</span>
+                                </div>
+                            </div>
+
+                            <img src="https://placehold.co/600x400/indigo/white?text=Spoken+English"
+                                class="card-img-top" alt="Course">
+
+                        </div>
+                        <div class="card-body p-4">
+                            <!-- Category badge -->
+                            <span class="badge rounded-pill px-3 py-2 mb-3"
+                                style="--tw-gradient-stops: #6366f1, #a855f7, #d946ef;">
+                                Basic
+                            </span>
+
+                            <h5 class="card-title fw-bold mb-3">MERN Full Stack Mastery</h5>
+                            <p class="text-muted small mb-4">Master MongoDB, Express, React, and Node.js with 10+ real
+                                projects.</p>
+
+                            <div class="pt-3 border-top d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <div class="badge"
+                                        style="background: #eef2ff; color: #6366f1; border-radius: 6px; font-size: 0.7rem;">
+                                        6 Months
+                                    </div>
+                                </div>
+
+                                <a href="#" class="btn btn-primary btn-sm enroll-fancy">Enroll Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <h3 class="fw-bold display-6 mb-4">Competitive Prep</h3>
+            <div class="row g-4 mb-5">
+                <div class="col-md-4">
+                    <div class="card course-card h-100 shadow-sm">
+                        <div class="position-relative">
+                            <!-- LIVE badge -->
+                            <div class="position-absolute top-0 end-0 m-3 z-2">
+                                <div
+                                    class="live-badge d-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-white shadow fw-bold">
+                                    <span class="live-dot"></span>
+                                    <span class="text-danger small" style="letter-spacing: 0.6px;">LIVE BATCH</span>
+                                </div>
+                            </div>
+
+                            <img src="https://placehold.co/600x400/indigo/white?text=SSC+CGL"
+                                class="card-img-top" alt="Course">
+
+                        </div>
+                        <div class="card-body p-4">
+                            <!-- Category badge -->
+                            <span class="badge rounded-pill px-3 py-2 mb-3"
+                                style="--tw-gradient-stops: #6366f1, #a855f7, #d946ef;">
+                                PRE + MAINS
+                            </span>
+
+                            <h5 class="card-title fw-bold mb-3">Course Inculde</h5>
+                            <p class="text-muted small mb-4">
+                                Maths(Basic & Advance), English, Reasoning, Computer
+                            </p>
+
+                            <div class="pt-3 border-top d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <div class="badge"
+                                        style="background: #eef2ff; color: #6366f1; border-radius: 6px; font-size: 0.7rem;">
+                                        10 Months
+                                    </div>
+                                </div>
+
+                                <a href="#" class="btn btn-primary btn-sm enroll-fancy">Enroll Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card course-card h-100 shadow-sm">
+                        <div class="position-relative">
+                            <!-- LIVE badge -->
+                            <div class="position-absolute top-0 end-0 m-3 z-2">
+                                <div
+                                    class="live-badge d-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-white shadow fw-bold">
+                                    <span class="live-dot"></span>
+                                    <span class="text-danger small" style="letter-spacing: 0.6px;">LIVE BATCH</span>
+                                </div>
+                            </div>
+
+                            <img src="https://placehold.co/600x400/indigo/white?text=SSC+CHSL"
+                                class="card-img-top" alt="Course">
+
+                        </div>
+                        <div class="card-body p-4">
+                            <!-- Category badge -->
+                            <span class="badge rounded-pill px-3 py-2 mb-3"
+                                style="--tw-gradient-stops: #6366f1, #a855f7, #d946ef;">
+                                Comprehensive
+                            </span>
+
+                            <h5 class="card-title fw-bold mb-3">Course Inculde</h5>
+                            <p class="text-muted small mb-4">
+                                Maths, English, Reasoning, Computer
+                            </p>
+
+                            <div class="pt-3 border-top d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <div class="badge"
+                                        style="background: #eef2ff; color: #6366f1; border-radius: 6px; font-size: 0.7rem;">
+                                        8 Months
+                                    </div>
+                                </div>
+
+                                <a href="#" class="btn btn-primary btn-sm enroll-fancy">Enroll Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card course-card h-100 shadow-sm">
+                        <div class="position-relative">
+                            <!-- LIVE badge -->
+                            <div class="position-absolute top-0 end-0 m-3 z-2">
+                                <div
+                                    class="live-badge d-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-white shadow fw-bold">
+                                    <span class="live-dot"></span>
+                                    <span class="text-danger small" style="letter-spacing: 0.6px;">LIVE BATCH</span>
+                                </div>
+                            </div>
+
+                            <img src="https://placehold.co/600x400/indigo/white?text=Railway"
+                                class="card-img-top" alt="Course">
+
+                        </div>
+                        <div class="card-body p-4">
+                            <!-- Category badge -->
+                            <span class="badge rounded-pill px-3 py-2 mb-3"
+                                style="--tw-gradient-stops: #6366f1, #a855f7, #d946ef;">
+                                Comprehensive
+                            </span>
+
+                            <h5 class="card-title fw-bold mb-3">Course Include</h5>
+                            <p class="text-muted small mb-4">Complete Guidance & Strategy</p>
+
+                            <div class="pt-3 border-top d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <div class="badge"
+                                        style="background: #eef2ff; color: #6366f1; border-radius: 6px; font-size: 0.7rem;">
+                                        7-8 Months
+                                    </div>
+                                </div>
+
+                                <a href="#" class="btn btn-primary btn-sm enroll-fancy">Enroll Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card course-card h-100 shadow-sm">
+                        <div class="position-relative">
+                            <!-- LIVE badge -->
+                            <div class="position-absolute top-0 end-0 m-3 z-2">
+                                <div
+                                    class="live-badge d-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-white shadow fw-bold">
+                                    <span class="live-dot"></span>
+                                    <span class="text-danger small" style="letter-spacing: 0.6px;">LIVE BATCH</span>
+                                </div>
+                            </div>
+
+                            <img src="https://placehold.co/600x400/indigo/white?text=DSSSB"
+                                class="card-img-top" alt="Course">
+
+                        </div>
+                        <div class="card-body p-4">
+                            <!-- Category badge -->
+                            <span class="badge rounded-pill px-3 py-2 mb-3"
+                                style="--tw-gradient-stops: #6366f1, #a855f7, #d946ef;">
+                                Complete Paper1
+                            </span>
+
+                            <h5 class="card-title fw-bold mb-3">Comprehensive</h5>
+                            <p class="text-muted small mb-4">TGT, PGT Complete preparation</p>
+
+                            <div class="pt-3 border-top d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <div class="badge"
+                                        style="background: #eef2ff; color: #6366f1; border-radius: 6px; font-size: 0.7rem;">
+                                        10 Months
+                                    </div>
+                                </div>
+
+                                <a href="#" class="btn btn-primary btn-sm enroll-fancy">Enroll Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-2 col-md-6">
+                    <span class="footer-logo-text">GK ACADEMY</span>
+                    <p class="mb-4 pe-lg-4">Think Big with Us. We are committed to providing programs that go beyond
+                        traditional education, empowering individuals to realize their aspirations in the dynamic world
+                        realm.</p>
+                    <div class="social-icons mt-3">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-7 col-md-12">
+                    <h5 class="footer-heading">Top Courses</h5>
+                    <div class="row">
+
+                        <div class="col-md-4">
+                            <h6 class="text-white fw-bold mb-3 small text-uppercase">English Mastery</h6>
+                            <ul class="footer-links">
+                                <li><a href="#">American English</a></li>
+                                <li><a href="#">British English</a></li>
+                                <li><a href="#">Business Communication</a></li>
+                                <li><a href="#">Spoken Basics</a></li>
+                                <li><a href="#">IELTS Prep</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-md-4">
+                            <h6 class="text-white fw-bold mb-3 small text-uppercase">Software Engineering</h6>
+                            <ul class="footer-links">
+                                <li><a href="#">MERN Full Stack Dev</a></li>
+                                <li><a href="#">Java Full Stack</a></li>
+                                <li><a href="#">Data Structures (DSA)</a></li>
+                                <li><a href="#">Python Data Science</a></li>
+                                <li><a href="#">Machine Learning / AI</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-md-4">
+                            <h6 class="text-white fw-bold mb-3 small text-uppercase">Competitive Exam</h6>
+                            <ul class="footer-links">
+                                <li><a href="#">SSC CGL</a></li>
+                                <li><a href="#">SSC CHSL</a></li>
+                                <li><a href="#">Banking Exams</a></li>
+                                <li><a href="#">Placement Aptitude</a></li>
+                                <li><a href="#">GATE Foundations</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-heading">Contact Us</h5>
+                    <ul class="footer-links contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Extension Colony, Burari, Delhi, 110084, India</li>
+                        <li><i class="fas fa-phone"></i> +91 850 587 1840</li>
+                        <li><i class="fas fa-envelope"></i> hr@gkacademy.com</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom text-center mt-5">
+            <div class="container">
+                <p class="mb-0 opacity-50 small">&copy; 2026 GK Academy. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
