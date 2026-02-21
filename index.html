@@ -44,6 +44,24 @@
             align-items: center;
         }
 
+        /* Fix for transparent mobile menu background */
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                background: #ffffff; /* Solid white */
+                margin: 0 -1rem; /* Aligns background with navbar edges */
+                padding: 1rem;
+                border-radius: 0 0 15px 15px; /* Adds a nice curve to the bottom */
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                margin-top: 10px; /* Slight gap from the brand logo */
+            }
+        
+            .navbar {
+                /* Ensure the main navbar container stays white on mobile */
+                background: #ffffff !important; 
+                backdrop-filter: none !important;
+            }
+        }
+
         .brand-text {
             background: var(--primary-gradient);
             -webkit-background-clip: text;
@@ -1372,6 +1390,7 @@
 </body>
 
 </html>
+
 
 
 
