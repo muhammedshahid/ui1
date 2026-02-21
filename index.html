@@ -1349,7 +1349,14 @@
 
             // 5. Create the WhatsApp Link
             // Use api.whatsapp.com — more reliable for emoji right now
-            const whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(text)}`;
+            // const whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(text)}`;
+
+            function toPercentEncoded(str) {
+              return encodeURIComponent(str).replace(/%20/g, '+'); // optional: space → +
+            }
+            
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${toPercentEncoded(text)}`;
+
 
             // 6. Open in a new tab
             window.open(whatsappURL, '_blank').focus();
@@ -1365,4 +1372,5 @@
 </body>
 
 </html>
+
 
