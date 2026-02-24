@@ -9,631 +9,262 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap"
         rel="stylesheet">
+    <link href="./style/main.css" rel="stylesheet">
     <style>
-        :root {
-            --primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-            --dark-navy: #0f172a;
-            --soft-bg: #f8fafc;
-            --nav-height: 80px;
-            /* Fixed height for calculation */
+        /* --- Category Headings --- */
+        .category-title {
+            color: #00d4ff;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #00d4ff;
+            padding-left: 15px;
         }
 
-        body,
-        html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow-x: hidden;
+        /* --- The Scroll Container --- */
+        .horizontal-scroll-row {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 10px 5px 30px 5px;
+            /* Bottom padding for the hover lift */
+            scrollbar-width: none;
+            /* Hides scrollbar in Firefox */
+            -ms-overflow-style: none;
+            /* Hides scrollbar in IE/Edge */
         }
 
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--soft-bg);
-            color: #334155;
+        /* Hides scrollbar in Chrome/Safari/Opera */
+        .horizontal-scroll-row::-webkit-scrollbar {
+            display: none;
         }
 
-        /* --- Modern Navbar --- */
-        .navbar {
-            background: rgba(255, 255, 255, 0.8) !important;
+        /* --- Card Sizing for Tiers --- */
+        .horizontal-scroll-row .showcase-card-modern {
+            flex: 0 0 280px;
+            /* Fixed width so they don't shrink */
+            background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            padding: 0;
-            /* Adjusted for fixed height */
-            height: var(--nav-height);
-            display: flex;
-            align-items: center;
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
         }
 
-        /* Fix for transparent mobile menu background */
-        @media (max-width: 991px) {
-            .navbar-collapse {
-                background: #ffffff; /* Solid white */
-                margin: 0 -1rem; /* Aligns background with navbar edges */
-                padding: 1rem;
-                border-radius: 0 0 15px 15px; /* Adds a nice curve to the bottom */
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-                margin-top: 10px; /* Slight gap from the brand logo */
-            }
-        
-            .navbar {
-                /* Ensure the main navbar container stays white on mobile */
-                background: #ffffff !important; 
-                backdrop-filter: none !important;
-            }
-        }
-
-        .brand-text {
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 800;
-        }
-
-        /* --- Carousel Enhancements --- */
-        .hero-slide {
-            height: calc(100vh - var(--nav-height));
-            /* Covers remaining window height */
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-title {
-            font-weight: 800;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            line-height: 1.1;
-        }
-
-        .floating-img {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-
-        .gradient-span {
-            background: linear-gradient(to right, #818cf8, #c084fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Modern Slider Controls */
-        .carousel-control-prev,
-        .carousel-control-next {
-            width: 5%;
-            opacity: 0.2;
-        }
-
-        .carousel-control-next {
-            right: 20px;
-        }
-
-        .carousel-control-prev {
-            left: 20px;
-        }
-
-        .carousel-indicators {
-            opacity: 0.2;
-        }
-
-        .carousel-indicators [data-bs-target] {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            margin: 0 6px;
-        }
-
-        /* --- Buttons --- */
-        .btn-primary {
-            background: var(--primary-gradient);
-            border: none;
-            padding: 14px 32px;
-            border-radius: 12px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.4);
-        }
-
-        /* Light subtle background + better spacing */
-        #courses {
-            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
-            /* or use a very light color: background: #f9fafb; */
-        }
-
-        /* Main heading block */
-        #courses .text-center.mb-5 {
-            position: relative;
-            padding-bottom: 1.5rem;
-        }
-
-        #courses h6.text-primary.text-uppercase {
-            font-size: 1.05rem;
-            letter-spacing: 2.5px;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-            color: #6366f1 !important;
-            /* indigo-600 */
-        }
-
-        #courses h2.fw-extrabold {
-            font-weight: 800;
-            font-size: clamp(2.25rem, 5vw, 3.5rem);
-            line-height: 1.1;
-            background: linear-gradient(90deg, #4f46e5, #7c3aed, #ec4899);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1rem;
-        }
-
-        /* Category titles - Engineering Courses, English Courses, etc. */
-        #courses h3.fw-bold.display-6 {
-            font-weight: 800;
-            font-size: clamp(1.875rem, 4.5vw, 2.75rem);
-            margin: 3.5rem 0 1.75rem;
-            color: #1e293b;
-            /* slate-900 */
-            position: relative;
-            padding-left: 0;
-        }
-
-        /* Left colored bar accent (popular modern look) */
-        #courses h3.fw-bold.display-6::before {
-            content: '';
-            position: absolute;
-            left: -20px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 6px;
-            height: 60%;
-            background: linear-gradient(to bottom, #6366f1, #a855f7);
-            border-radius: 0 6px 6px 0;
-        }
-
-        #courses h3.fw-bold.display-6 {
-            background: linear-gradient(120deg, #4f46e5, #a855f7, #ec4899);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            color: transparent;
-            background-size: 200% auto;
-            animation: textGradientFlow 7s linear infinite;
-        }
-
-        @keyframes textGradientFlow {
-            to {
-                background-position: 200% center;
-            }
-        }
-
-        /* Card hover lift + shadow enhancement */
-        .course-card {
-            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-            border: none;
-            border-radius: 1rem;
-            overflow: hidden;
-            background: white;
-        }
-
-        .course-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.18) !important;
-        }
-
-        .card.course-card {
-            height: 100%;
-        }
-
-        /* Optional: fade-in animation when scrolling into view */
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .course-card {
-            animation: fadeUp 0.8s ease-out forwards;
-            opacity: 0;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            #courses h3.fw-bold.display-6 {
-                font-size: 1.75rem;
-                margin: 2.5rem 0 1.25rem;
-            }
-
-            #courses h2.display-5 {
-                font-size: 2.5rem;
-            }
-        }
-
-        /* For the animated gradient category badge */
-        @keyframes textGradient {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        /* Optional: nicer spacing & shadow on cards */
-        .course-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .course-card:hover {
+        /* Keep the same hover and icon styling from previous step */
+        .showcase-card-modern:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12) !important;
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(0, 212, 255, 0.4);
         }
 
-        .badge[style*="--tw-gradient-stops"] {
-            background: linear-gradient(90deg, var(--tw-gradient-stops));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            color: transparent;
-            background-size: 200%;
-            animation: textGradient 4.5s ease infinite;
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .badge[style*="--tw-gradient-stops"]:hover {
-            transform: scale(1.05);
-            border-color: rgba(99, 102, 241, 0.6);
-        }
-
-        @keyframes textGradient {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        /* --- Live Indicator Animation --- */
-        .live-badge {
-            animation: livePulse 2.4s ease-in-out infinite;
-        }
-
-        .live-dot {
-            width: 10px;
-            height: 10px;
-            background: #ef4444;
-            border-radius: 50%;
-            box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.45);
-            animation: dotPulse 2s infinite;
-        }
-
-        @keyframes livePulse {
-
-            0%,
-            100% {
-                transform: scale(1);
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            }
-
-            50% {
-                transform: scale(1.07);
-                box-shadow: 0 6px 20px rgba(239, 68, 68, 0.25);
-            }
-        }
-
-        @keyframes dotPulse {
-
-            0%,
-            100% {
-                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
-            }
-
-            70% {
-                box-shadow: 0 0 0 8px rgba(239, 68, 68, 0);
-            }
-        }
-
-        .live-dot {
-            width: 10px;
-            height: 10px;
-            background-color: #ef4444;
-            border-radius: 50%;
-            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.4);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
-            }
-
-            70% {
-                box-shadow: 0 0 0 8px rgba(239, 68, 68, 0);
-            }
-
-            100% {
-                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
-            }
-        }
-
-        .enroll-fancy {
-            position: relative;
-            overflow: hidden;
-            /* background-image: linear-gradient(90deg, #4f46e5 0%, #7c3aed 50%, #ec4899 100%); */
-            background-size: 300% 300%;
-            background-position: 0% 50%;
-            transition: background-position 0.8s ease, transform 0.25s ease;
-            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.35);
-        }
-
-        .enroll-fancy::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.6s ease;
-            pointer-events: none;
-        }
-
-        .enroll-fancy:hover {
-            background-position: 100% 50%;
-            transform: scale(1.05) translateY(-2px);
-            box-shadow: 0 12px 30px rgba(99, 102, 241, 0.5);
-        }
-
-        .enroll-fancy:focus-visible {
-            background-position: 100% 50%;
-            transform: scale(1.05) translateY(-2px);
-            box-shadow: 0 12px 30px rgba(99, 102, 241, 0.5);
-        }
-
-        .enroll-fancy:hover::after {
-            transform: translateX(100%);
-        }
-
-        .enroll-fancy:active {
-            transform: scale(0.96) translateY(1px);
-            transition: transform 0.1s ease;
-        }
-
-        /* --- Updated Modern Footer --- */
-        .main-footer {
-            background-color: var(--dark-navy);
-            color: rgba(255, 255, 255, 0.8);
-            padding-top: 80px;
-            border-top: 4px solid #6366f1;
-        }
-
-        .footer-logo-text {
-            font-size: 1.5rem;
-            font-weight: 800;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-            display: inline-block;
-        }
-
-        .footer-heading {
-            color: #fff;
-            font-weight: 700;
-            margin-bottom: 25px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-heading::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 40px;
-            height: 3px;
-            background: var(--primary-gradient);
-            border-radius: 2px;
-        }
-
-        .footer-links {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.6);
-            text-decoration: none;
-            transition: 0.3s;
-            font-size: 0.95rem;
-        }
-
-        .footer-links a:hover {
-            color: #818cf8;
-            padding-left: 5px;
-        }
-
-        .social-icons a {
-            width: 40px;
-            height: 40px;
+        .card-icon {
+            font-size: 1.8rem;
+            color: #00d4ff;
+            background: rgba(0, 212, 255, 0.1);
+            width: 60px;
+            height: 60px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            margin-bottom: 1rem;
+        }
+
+        .showcase-card-modern h3 {
+            font-size: 1.2rem;
             color: #fff;
-            border-radius: 10px;
-            margin-right: 10px;
-            transition: 0.3s;
+            margin-bottom: 5px;
         }
 
-        .social-icons a:hover {
-            background: var(--primary-gradient);
-            transform: translateY(-3px);
-        }
-
-        .contact-info i {
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-right: 10px;
-            width: 20px;
-        }
-
-        .footer-bottom {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 20px 0;
-            margin-top: 60px;
+        .showcase-card-modern p {
             font-size: 0.85rem;
+            color: #94a3b8;
+            margin: 0;
         }
 
-        /* --- Unified Fixed Contact Sidebar --- */
-        .contact-sidebar {
-            position: fixed;
-            top: 75%;
-            transform: translateY(-50%);
-            z-index: 1050;
+        /* --- Master Showcase Section --- */
+
+        .master-showcase-modern {
+            /* Applying your specific gradient */
+
             display: flex;
-            flex-direction: column;
-            background: white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            border-radius: 12px 0 0 12px;
-            transition: all 0.3s ease;
-            overflow: hidden;
+            align-items: center;
+            color: #ffffff;
         }
 
-        /* Rule for Larger Screens: Floating 14px from edge */
-        @media (min-width: 992px) {
-            .contact-sidebar {
-                right: 14px;
-                /* Full capsule look */
-            }
+        /* --- Header Typography --- */
+        .showcase-header-modern h2 {
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 1rem;
         }
 
-        /* Rule for Smaller Screens: Flush to the edge */
-        @media (max-width: 991px) {
-            .contact-sidebar {
-                right: 0;
-                /* Sticks to the right side */
-            }
+        .showcase-header-modern p {
+            color: #94a3b8;
+            /* Slate gray for elegant readability */
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .sidebar-item {
+        /* --- Glassmorphism Card Design --- */
+        .showcase-card-modern {
+            background: rgba(255, 255, 255, 0.03);
+            /* Translucent white */
+            backdrop-filter: blur(12px);
+            /* The "Glass" effect */
+            -webkit-backdrop-filter: blur(12px);
+            /* Safari Support */
+            padding: 3rem 2rem;
+            border-radius: 24px;
+            /* Deep rounded corners */
+            text-align: center;
+            height: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            /* Subtle "edge" */
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        /* --- Interactive Hover State --- */
+        .showcase-card-modern:hover {
+            transform: translateY(-12px);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(0, 212, 255, 0.4);
+            /* Cyan glow on hover */
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        /* --- Icon Wrapper (The Squircle) --- */
+        .card-icon {
+            font-size: 2rem;
+            color: #00d4ff;
+            /* Electric Cyan accent */
+            background: rgba(0, 212, 255, 0.12);
+            /* Subtle glow behind icon */
+            width: 75px;
+            height: 75px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 18px;
+            /* The "Squircle" look */
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .showcase-card-modern:hover .card-icon {
+            transform: scale(1.1) rotate(5deg);
+            background: rgba(0, 212, 255, 0.2);
+        }
+
+        /* --- Card Text --- */
+        .showcase-card-modern h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #f8fafc;
+        }
+
+        .showcase-card-modern p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #94a3b8;
+            /* Matching the header's muted tone */
+            margin-bottom: 0;
+        }
+
+        /* --- Carousel Control Adjustments (Optional) --- */
+        /* Makes the Bootstrap indicators look better with this dark theme */
+        .carousel-indicators [data-bs-target] {
+            background-color: #00d4ff;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        /* --- Scroll Container Logic --- */
+        .horizontal-scroll-row {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 10px 5px 30px 5px;
+
+            /* Smooth scrolling for JS and Touch */
+            scroll-behavior: smooth;
+
+            /* Snapping Logic: Makes it feel like an App */
+            scroll-snap-type: x mandatory;
+
+            /* Hide scrollbars */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .horizontal-scroll-row::-webkit-scrollbar {
+            display: none;
+        }
+
+        .showcase-card-modern {
+            flex: 0 0 300px;
+            /* Card Width */
+            scroll-snap-align: start;
+            /* Card locks to the start of the row */
+        }
+
+        /* --- Navigation Buttons (Desktop only) --- */
+        .scroll-nav {
+            gap: 10px;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 10px;
-            text-decoration: none;
             transition: all 0.3s ease;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            cursor: pointer;
         }
 
-        .sidebar-item:last-child {
-            border-bottom: none;
+        .nav-btn:hover {
+            background: #00d4ff;
+            color: #0f172a;
+            border-color: #00d4ff;
         }
 
-        /* Hover State */
-        .sidebar-item:hover {
-            background: var(--primary-gradient);
-        }
-
-        .sidebar-item:hover i,
-        .sidebar-item:hover .vertical-text {
-            color: white !important;
-            -webkit-text-fill-color: white !important;
-        }
-
-        /* Content Styles */
-        .sidebar-item i {
-            font-size: 1.4rem;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .enquiry-btn {
-            padding: 25px 12px;
-        }
-
-        .vertical-text {
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-size: 0.75rem;
-            color: var(--dark-navy);
-            transform: rotate(180deg);
-        }
-
-        .fa-phone-alt {
-            transform: rotate(90deg);
-        }
-
-        /* --- Modal Custom Styling --- */
-        #enquiryModal .form-control:focus,
-        #enquiryModal .form-select:focus {
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
-            background-color: #fff !important;
-            border: 1px solid #6366f1 !important;
-        }
-
-        #enquiryModal .btn-primary {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        #enquiryModal .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+        /* Glassmorphism Card (Refined) */
+        .showcase-card-modern {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 2.5rem 1.5rem;
+            transition: 0.4s;
         }
     </style>
 </head>
 
 <body>
-
     <nav class="navbar navbar-expand-lg navbar-light sticky-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="./icon6.png" alt="Logo" width="45" height="45" class="me-2 rounded-3">
+                <img src="./img/brand/brand.png" alt="Logo" width="45" height="45" class="me-2 rounded-3">
                 <div class="d-flex flex-column">
                     <span class="brand-text lh-1" style="font-size: 1.4rem;">GK ACADEMY</span>
                     <span class="text-muted fw-medium mt-1"
-                        style="font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px;">Gateway of
-                        Knowledge</span>
+                        style="font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px;">
+                        Gateway of Knowledge
+                    </span>
                 </div>
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -641,12 +272,16 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item"><a class="nav-link fw-semibold px-3" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link fw-semibold px-3" href="#">Courses</a></li>
-                    <li class="nav-item"><a class="nav-link fw-semibold px-3" href="#">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link fw-semibold px-3" href="#">Mentors</a></li>
+                    <li class="nav-item"><a class="nav-link fw-semibold px-3" href="#" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a class="nav-link fw-semibold px-3" href="#courses"
+                            class="nav-link">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link fw-semibold px-3" href="#" class="nav-link">About Us</a>
+                    </li>
                     <li class="nav-item">
-                        <a class="btn btn-primary text-white ms-lg-4 shadow-sm" href="#" data-bs-title="📑 Book Free Demo" data-bs-toggle="modal" data-bs-target="#enquiryModal">Free Demo</a>
+                        <a class="btn btn-primary text-white ms-lg-4 shadow-sm" href="#"
+                            data-bs-title="📑 Book Free Demo" data-bs-toggle="modal" data-bs-target="#enquiryModal">
+                            Free Demo
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -658,71 +293,156 @@
             <button type="button" data-bs-target="#mainHeroCarousel" data-bs-slide-to="0" class="active"></button>
             <button type="button" data-bs-target="#mainHeroCarousel" data-bs-slide-to="1"></button>
             <button type="button" data-bs-target="#mainHeroCarousel" data-bs-slide-to="2"></button>
+            <button type="button" data-bs-target="#mainHeroCarousel" data-bs-slide-to="3"></button>
+            <button type="button" data-bs-target="#mainHeroCarousel" data-bs-slide-to="4"></button>
+            <button type="button" data-bs-target="#mainHeroCarousel" data-bs-slide-to="5"></button>
+            <button type="button" data-bs-target="#mainHeroCarousel" data-bs-slide-to="6"></button>
+            <button type="button" data-bs-target="#mainHeroCarousel" data-bs-slide-to="7"></button>
         </div>
 
         <div class="carousel-inner">
+
+
+
             <div class="carousel-item active">
-                <div class="hero-slide" style="background: var(--dark-navy);">
+                <section class="master-showcase-modern py-5"
+                    style="background: radial-gradient(circle at 30% 40%, #1f2937 0%, #0f172a 80%); min-height: 100vh;">
                     <div class="container">
-                        <div class="row align-items-center text-center text-lg-start">
-                            <div class="col-lg-7 text-white">
-                                <span class="badge mb-3 py-2 px-3"
-                                    style="background: rgba(255,255,255,0.1); color: #818cf8;">🚀 NEXT GEN
-                                    LEARNING</span>
-                                <h1 class="hero-title mb-4">Master <span class="gradient-span">MERN Stack</span>
-                                    Development</h1>
-                                <p class="lead opacity-75 mb-5 fs-5">Accelerate your career with project-based learning
-                                    and industry expert mentorship.</p>
-                                <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
-                                    <button class="btn btn-primary btn-lg">Explore Curriculum</button>
-                                    <button class="btn btn-outline-light btn-lg">Watch Demo</button>
+
+                        <div class="showcase-header-modern text-center mb-5">
+                            <h2 class="display-4 fw-bold text-white">Our Course Catalog</h2>
+                            <p class="lead" style="color: #94a3b8;">Career focused programs crafted for real world excellence
+                            </p>
+                        </div>
+
+                        <div class="category-tier mb-5">
+                            <div class="d-flex justify-content-between align-items-end mb-3">
+                                <h4 class="category-title mb-0"><i class="fas fa-terminal"></i> Software Engineering
+                                </h4>
+                                <div class="scroll-nav d-none d-md-flex">
+                                    <button class="nav-btn prev" onclick="sideScroll(this, 'left')"><i
+                                            class="fas fa-chevron-left"></i></button>
+                                    <button class="nav-btn next" onclick="sideScroll(this, 'right')"><i
+                                            class="fas fa-chevron-right"></i></button>
                                 </div>
                             </div>
-                            <div class="col-lg-5 d-none d-lg-block">
-                                <img src="https://placehold.co/500x400/orange/white?text=Upgrade+Skills"
-                                    class="img-fluid rounded-4 shadow-lg border border-secondary floating-img"
-                                    alt="Hero">
+
+                            <div class="horizontal-scroll-row">
+                                <article class="showcase-card-modern">
+                                    <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
+                                    <h3>MERN Full Stack</h3>
+                                    <p>Highly Demanded</p>
+                                </article>
+                                <article class="showcase-card-modern">
+                                    <div class="card-icon"><i class="fas fa-network-wired"></i></div>
+                                    <h3>UI/UX Design</h3>
+                                    <p>Beginner to Pro</p>
+                                </article>
+                                <article class="showcase-card-modern">
+                                    <div class="card-icon"><i class="fas fa-code"></i></div>
+                                    <h3>Full Stack Pro</h3>
+                                    <p>Complete Guide</p>
+                                </article>
+                                <article class="showcase-card-modern">
+                                    <div class="card-icon"><i class="fas fa-project-diagram"></i></div>
+                                    <h3>DSA</h3>
+                                    <p>Interview Cracker</p>
+                                </article>
+                                <article class="showcase-card-modern">
+                                    <div class="card-icon"><i class="fas fa-python"></i></div>
+                                    <h3>Python</h3>
+                                    <p>Versatile Programming</p>
+                                </article>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="carousel-item">
-                <div class="hero-slide" style="background: linear-gradient(45deg, #1e1b4b, #312e81);">
-                    <div class="container">
-                        <div class="row align-items-center justify-content-center text-center">
-                            <div class="col-lg-9 text-white">
-                                <h1 class="hero-title mb-4">Join <span class="gradient-span">10,000+</span> Students
-                                    Today</h1>
-                                <p class="lead opacity-75 mb-5 fs-4">Join India's most loved community for developers
-                                    and designers.</p>
-                                <button class="btn btn-primary btn-lg px-5">Get Started Now</button>
+                        <div class="category-tier mb-5">
+                            <div class="d-flex justify-content-between align-items-end mb-3">
+                                <h4 class="category-title mb-0"><i class="fas fa-language me-2"></i> English Language</h4>
+                                <div class="scroll-nav d-none d-md-flex">
+                                    <button class="nav-btn prev" onclick="sideScroll(this, 'left')"><i
+                                            class="fas fa-chevron-left"></i></button>
+                                    <button class="nav-btn next" onclick="sideScroll(this, 'right')"><i
+                                            class="fas fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+
+                            <div class="horizontal-scroll-row">
+                                <article class="showcase-card-modern">
+                                    <div class="card-icon"><i class="fas fa-microphone-alt"></i></div>
+                                    <h3>American—British</h3>
+                                    <p>Speaks Eloquently</p>
+                                </article>
+                                <article class="showcase-card-modern">
+                                    <div class="card-icon"><i class="fas fa-briefcase"></i></i></div>
+                                    <h3>Business English</h3>
+                                    <p>Communicate professionally</p>
+                                </article>
+                                <article class="showcase-card-modern">
+                                    <div class="card-icon"><i class="fas fa-globe"></i></div>
+                                    <h3>TOEFL—IELTS</h3>
+                                    <p>Score High</p>
+                                </article>
                             </div>
                         </div>
+
+                        <div class="category-tier mb-5">
+                            <div class="d-flex justify-content-between align-items-end mb-3">
+                                <h4 class="category-title mb-0"><i class="fas fa-user-graduate me-2"></i> Competitive Exams</h4>
+                                <div class="scroll-nav d-none d-md-flex">
+                                    <button class="nav-btn prev" onclick="sideScroll(this, 'left')"><i
+                                            class="fas fa-chevron-left"></i></button>
+                                    <button class="nav-btn next" onclick="sideScroll(this, 'right')"><i
+                                            class="fas fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+
+                            <div class="horizontal-scroll-row">
+                                <article class="showcase-card-modern">
+                                    <div class="card-icon"><i class="fas fa-book"></i></div>
+                                    <h3>SSC CGL</h3>
+                                    <p>Smart Preparation</p>
+                                </article>
+                                <article class="showcase-card-modern">
+                                    <div class="card-icon"><i class="fas fa-university"></i></div>
+                                    <h3>SSC CHSL</h3>
+                                    <p>Result Oriented</p>
+                                </article>
+                                <article class="showcase-card-modern">
+                                    <div class="card-icon"><i class="fas fa-pencil-alt"></i></div>
+                                    <h3>SSC MTS</h3>
+                                    <p>Real—time Practice</p>
+                                </article>
+                                 <article class="showcase-card-modern">
+                                    <div class="card-icon"><i class="fas fa-landmark"></i></div>
+                                    <h3>Banking</h3>
+                                    <p>Time Management</p>
+                                </article>
+                                <article class="showcase-card-modern">
+                                    <div class="card-icon"><i class="fas fa-train"></i></div>
+                                    <h3>Railways</h3>
+                                    <p>Aptitude & Logic</p>
+                                </article>
+                                <article class="showcase-card-modern">
+                                    <div class="card-icon"><i class="fas fa-file-alt"></i></div>
+                                    <h3>DSSSB</h3>
+                                    <p>Comprehensive Learning</p>
+                                </article>
+                            </div>
+                        </div>
+
                     </div>
-                </div>
+                </section>
             </div>
 
-            <div class="carousel-item">
-                <div class="hero-slide" style="background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);">
-                    <div class="container text-center text-white">
-                        <span class="badge bg-success mb-3 py-2 px-3">💼 100% PLACEMENT ASSISTANCE</span>
-                        <h1 class="hero-title mb-4">Your Dream Job is <span class="gradient-span">Just One Course</span>
-                            Away</h1>
-                        <p class="lead opacity-75 mb-5 fs-4">We help you get hired by top tech giants like Google,
-                            Amazon, and Meta.</p>
-                        <a href="#" class="btn btn-primary btn-lg">View Success Stories</a>
-                    </div>
-                </div>
-            </div>
+
         </div>
 
-        <button class="carousel-control-prev" type="button" data-bs-target="#mainHeroCarousel" data-bs-slide="prev">
+        <button class="carousel-control-prev d-none d-md-flex" type="button" data-bs-target="#mainHeroCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon"></span>
         </button>
 
-        <button class="carousel-control-next" type="button" data-bs-target="#mainHeroCarousel" data-bs-slide="next">
+        <button class="carousel-control-next d-none d-md-flex" type="button" data-bs-target="#mainHeroCarousel" data-bs-slide="next">
             <span class="carousel-control-next-icon"></span>
         </button>
     </div>
@@ -733,9 +453,10 @@
                 <h6 class="text-primary fw-bold text-uppercase mb-2">Programs</h6>
                 <h2 class="fw-extrabold display-6">What We Offer</h2>
             </div>
-            <h3 class="fw-bold display-6 mb-4">Engineering Courses</h3>
+            <h3 class="fw-bold display-6 mb-4"><i class="fas fa-terminal"></i> Engineering Courses</h3>
             <div class="row g-4 mb-5">
-                <div class="col-md-4">
+
+                <div class="col-md-4" id="mern">
                     <div class="card course-card h-100 shadow-sm">
                         <div class="position-relative">
                             <!-- LIVE badge -->
@@ -747,8 +468,7 @@
                                 </div>
                             </div>
 
-                            <img src="https://placehold.co/600x400/indigo/white?text=MERN+Full+Stack"
-                                class="card-img-top" alt="Course">
+                            <img src="./img/courses/cc1.png" class="card-img-top" alt="mern-stack">
                             <!-- <span
                                 class="badge bg-white text-dark position-absolute top-0 end-0 m-3 shadow-sm fw-bold">₹14,999</span> -->
 
@@ -760,9 +480,10 @@
                                 Web Development
                             </span>
 
-                            <h5 class="card-title fw-bold mb-3">MERN Full Stack Mastery</h5>
-                            <p class="text-muted small mb-4">Master MongoDB, Express, React, and Node.js with 10+ real
-                                projects.</p>
+                            <h5 class="card-title fw-bold mb-3">MERN Stack Mastery</h5>
+                            <p class="text-muted small mb-4">MongoDB • Express.js • React.js • Node.js • REST APIs •
+                                Authentication (JWT) • Redux • Git & GitHub • Deployment (Vercel/Render) • Project-Based
+                                Learning</p>
                             <!-- <div class="pt-3 border-top d-flex justify-content-between align-items-center">
                                 <span class="text-warning small fw-bold">★ 4.9 (2.3k reviews)</span>
                                 <a href="#" class="btn btn-primary btn-sm">Enroll</a>
@@ -772,7 +493,7 @@
                                 <div class="d-flex align-items-center">
                                     <div class="badge"
                                         style="background: #eef2ff; color: #6366f1; border-radius: 6px; font-size: 0.7rem;">
-                                        6 Months</div>
+                                        8 Months</div>
                                 </div>
                                 <!-- <a href="#" class="btn btn-primary btn-sm">Enroll</a> -->
                                 <a href="#" class="btn btn-primary btn-sm enroll-fancy">Enroll Now</a>
@@ -781,7 +502,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-4" id="frontend">
                     <div class="card course-card h-100 shadow-sm">
                         <div class="position-relative">
                             <!-- LIVE badge -->
@@ -793,8 +514,7 @@
                                 </div>
                             </div>
 
-                            <img src="https://placehold.co/600x400/indigo/white?text=MERN+Full+Stack"
-                                class="card-img-top" alt="Course">
+                            <img src="./img/courses/cc2.png" class="card-img-top" alt="frontend-development">
 
                         </div>
                         <div class="card-body p-4">
@@ -804,15 +524,141 @@
                                 Web Development
                             </span>
 
-                            <h5 class="card-title fw-bold mb-3">MERN Full Stack Mastery</h5>
-                            <p class="text-muted small mb-4">Master MongoDB, Express, React, and Node.js with 10+ real
-                                projects.</p>
+                            <h5 class="card-title fw-bold mb-3">Frontend Developer Pro</h5>
+                            <p class="text-muted small mb-4">HTML5 • CSS3 • JavaScript (ES6+) • Responsive Design • Git
+                                & GitHub • UI/UX Fundamentals • React.js • API Integration • Deployment Basics</p>
 
                             <div class="pt-3 border-top d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center">
                                     <div class="badge"
                                         style="background: #eef2ff; color: #6366f1; border-radius: 6px; font-size: 0.7rem;">
                                         6 Months
+                                    </div>
+                                </div>
+
+                                <a href="#" class="btn btn-primary btn-sm enroll-fancy">Enroll Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4" id="dsa">
+                    <div class="card course-card h-100 shadow-sm">
+                        <div class="position-relative">
+                            <!-- LIVE badge -->
+                            <div class="position-absolute top-0 end-0 m-3 z-2">
+                                <div
+                                    class="live-badge d-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-white shadow fw-bold">
+                                    <span class="live-dot"></span>
+                                    <span class="text-danger small" style="letter-spacing: 0.6px;">LIVE BATCH</span>
+                                </div>
+                            </div>
+
+                            <img src="./img/courses/cc3.png" class="card-img-top" alt="dsa">
+
+                        </div>
+                        <div class="card-body p-4">
+                            <!-- Category badge -->
+                            <span class="badge rounded-pill px-3 py-2 mb-3"
+                                style="--tw-gradient-stops: #6366f1, #a855f7, #d946ef;">
+                                Problem Solving
+                            </span>
+
+                            <h5 class="card-title fw-bold mb-3">DSA for Coding Interviews</h5>
+                            <p class="text-muted small mb-4">Time & Space Complexity • Recursion • Linked List • Stack &
+                                Queue • Trees • Binary Search Trees • Graphs • Hashing • Sorting & Searching • Dynamic
+                                Programming • Greedy Algorithms</p>
+
+                            <div class="pt-3 border-top d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <div class="badge"
+                                        style="background: #eef2ff; color: #6366f1; border-radius: 6px; font-size: 0.7rem;">
+                                        6 Months
+                                    </div>
+                                </div>
+
+                                <a href="#" class="btn btn-primary btn-sm enroll-fancy">Enroll Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4" id="full-stack-pro">
+                    <div class="card course-card h-100 shadow-sm">
+                        <div class="position-relative">
+                            <!-- LIVE badge -->
+                            <div class="position-absolute top-0 end-0 m-3 z-2">
+                                <div
+                                    class="live-badge d-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-white shadow fw-bold">
+                                    <span class="live-dot"></span>
+                                    <span class="text-danger small" style="letter-spacing: 0.6px;">LIVE BATCH</span>
+                                </div>
+                            </div>
+
+                            <img src="./img/courses/cc4.png" class="card-img-top" alt="full-stack-pro">
+
+                        </div>
+                        <div class="card-body p-4">
+                            <!-- Category badge -->
+                            <span class="badge rounded-pill px-3 py-2 mb-3"
+                                style="--tw-gradient-stops: #6366f1, #a855f7, #d946ef;">
+                                Software Engineer
+                            </span>
+
+                            <h5 class="card-title fw-bold mb-3">Full Stack Pro Engineering</h5>
+                            <p class="text-muted small mb-4">Frontend (HTML, CSS, JavaScript, Frameworks) • Backend
+                                (Node.js / Python / Java) • APIs & Security • Databases (SQL & NoSQL) • System Design &
+                                Architecture • DevOps Fundamentals • Cloud Deployment • Testing • CI/CD • Performance
+                                Optimization</p>
+
+                            <div class="pt-3 border-top d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <div class="badge"
+                                        style="background: #eef2ff; color: #6366f1; border-radius: 6px; font-size: 0.7rem;">
+                                        12 Months
+                                    </div>
+                                </div>
+
+                                <a href="#" class="btn btn-primary btn-sm enroll-fancy">Enroll Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4" id="python">
+                    <div class="card course-card h-100 shadow-sm">
+                        <div class="position-relative">
+                            <!-- LIVE badge -->
+                            <div class="position-absolute top-0 end-0 m-3 z-2">
+                                <div
+                                    class="live-badge d-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-white shadow fw-bold">
+                                    <span class="live-dot"></span>
+                                    <span class="text-danger small" style="letter-spacing: 0.6px;">LIVE BATCH</span>
+                                </div>
+                            </div>
+
+                            <img src="./img/courses/cc5.png" class="card-img-top" alt="python-dev">
+
+                        </div>
+                        <div class="card-body p-4">
+                            <!-- Category badge -->
+                            <span class="badge rounded-pill px-3 py-2 mb-3"
+                                style="--tw-gradient-stops: #6366f1, #a855f7, #d946ef;">
+                                Python
+                            </span>
+
+                            <h5 class="card-title fw-bold mb-3">Python Developer Pro</h5>
+                            <p class="text-muted small mb-4">
+                                Python Fundamentals • Data Types & Operators • Control Flow • Functions • OOP
+                                (Object-Oriented Programming) • File Handling • Exception Handling • Modules & Packages
+                                • Virtual Environments • Debugging & Best Practices
+                            </p>
+
+                            <div class="pt-3 border-top d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <div class="badge"
+                                        style="background: #eef2ff; color: #6366f1; border-radius: 6px; font-size: 0.7rem;">
+                                        12 Months
                                     </div>
                                 </div>
 
@@ -823,10 +669,10 @@
                 </div>
             </div>
 
-            <h3 class="fw-bold display-6 mb-4">English Language Courses</h3>
+            <h3 class="fw-bold display-6 mb-4"><i class="fas fa-language me-2"></i> English Language Courses</h3>
             <div class="row g-4 mb-5">
 
-                <div class="col-md-4">
+                <div class="col-md-4" id="accent">
                     <div class="card course-card h-100 shadow-sm">
                         <div class="position-relative">
                             <!-- LIVE badge -->
@@ -838,8 +684,7 @@
                                 </div>
                             </div>
 
-                            <img src="https://placehold.co/600x400/indigo/white?text=American+English"
-                                class="card-img-top" alt="Course">
+                            <img src="./img/courses/cc6.png" class="card-img-top" alt="american-british-accent">
 
                         </div>
                         <div class="card-body p-4">
@@ -849,15 +694,17 @@
                                 Beginner to Advance
                             </span>
 
-                            <h5 class="card-title fw-bold mb-3">MERN Full Stack Mastery</h5>
-                            <p class="text-muted small mb-4">Master MongoDB, Express, React, and Node.js with 10+ real
-                                projects.</p>
+                            <h5 class="card-title fw-bold mb-3">American & British Accent Mastery</h5>
+                            <p class="text-muted small mb-4">Pronunciation Fundamentals • IPA Sounds • Vowel & Consonant
+                                Clarity • Word Stress & Sentence Stress • Intonation Patterns • Connected Speech •
+                                Rhythm & Fluency • Accent Neutralization • Listening Drills • Real-Life Conversation
+                                Practice</p>
 
                             <div class="pt-3 border-top d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center">
                                     <div class="badge"
                                         style="background: #eef2ff; color: #6366f1; border-radius: 6px; font-size: 0.7rem;">
-                                        6 Months
+                                        15 Months
                                     </div>
                                 </div>
 
@@ -867,7 +714,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-4" id="business-oriented">
                     <div class="card course-card h-100 shadow-sm">
                         <div class="position-relative">
                             <!-- LIVE badge -->
@@ -879,49 +726,7 @@
                                 </div>
                             </div>
 
-                            <img src="https://placehold.co/600x400/indigo/white?text=British+English"
-                                class="card-img-top" alt="Course">
-
-                        </div>
-                        <div class="card-body p-4">
-                            <!-- Category badge -->
-                            <span class="badge rounded-pill px-3 py-2 mb-3"
-                                style="--tw-gradient-stops: #6366f1, #a855f7, #d946ef;">
-                                Beginner to Advance
-                            </span>
-
-                            <h5 class="card-title fw-bold mb-3">MERN Full Stack Mastery</h5>
-                            <p class="text-muted small mb-4">Master MongoDB, Express, React, and Node.js with 10+ real
-                                projects.</p>
-
-                            <div class="pt-3 border-top d-flex justify-content-between align-items-center">
-                                <div class="d-flex align-items-center">
-                                    <div class="badge"
-                                        style="background: #eef2ff; color: #6366f1; border-radius: 6px; font-size: 0.7rem;">
-                                        6 Months
-                                    </div>
-                                </div>
-
-                                <a href="#" class="btn btn-primary btn-sm enroll-fancy">Enroll Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card course-card h-100 shadow-sm">
-                        <div class="position-relative">
-                            <!-- LIVE badge -->
-                            <div class="position-absolute top-0 end-0 m-3 z-2">
-                                <div
-                                    class="live-badge d-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-white shadow fw-bold">
-                                    <span class="live-dot"></span>
-                                    <span class="text-danger small" style="letter-spacing: 0.6px;">LIVE BATCH</span>
-                                </div>
-                            </div>
-
-                            <img src="https://placehold.co/600x400/indigo/white?text=Business+Communication"
-                                class="card-img-top" alt="Course">
+                            <img src="./img/courses/cc7.png" class="card-img-top" alt="business-oriented">
 
                         </div>
                         <div class="card-body p-4">
@@ -931,9 +736,10 @@
                                 Business Oriented Skills
                             </span>
 
-                            <h5 class="card-title fw-bold mb-3">MERN Full Stack Mastery</h5>
-                            <p class="text-muted small mb-4">Master MongoDB, Express, React, and Node.js with 10+ real
-                                projects.</p>
+                            <h5 class="card-title fw-bold mb-3">Professional Communication Pro</h5>
+                            <p class="text-muted small mb-4">Professional Email Writing • Corporate Vocabulary •
+                                Presentation Skills • Public Speaking • Meeting Etiquette • Interview Skills •
+                                Negotiation Techniques • Client Communication • Body Language & Confidence Building</p>
 
                             <div class="pt-3 border-top d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center">
@@ -949,7 +755,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-4" id="toefl-ielts">
                     <div class="card course-card h-100 shadow-sm">
                         <div class="position-relative">
                             <!-- LIVE badge -->
@@ -961,20 +767,20 @@
                                 </div>
                             </div>
 
-                            <img src="https://placehold.co/600x400/indigo/white?text=Spoken+English"
-                                class="card-img-top" alt="Course">
+                            <img src="./img/courses/cc8.png" class="card-img-top" alt="toefl-ielts-prep">
 
                         </div>
                         <div class="card-body p-4">
                             <!-- Category badge -->
                             <span class="badge rounded-pill px-3 py-2 mb-3"
                                 style="--tw-gradient-stops: #6366f1, #a855f7, #d946ef;">
-                                Basic
+                                Beginner to Advance
                             </span>
 
-                            <h5 class="card-title fw-bold mb-3">MERN Full Stack Mastery</h5>
-                            <p class="text-muted small mb-4">Master MongoDB, Express, React, and Node.js with 10+ real
-                                projects.</p>
+                            <h5 class="card-title fw-bold mb-3">TOEFL & IELTS Success Program</h5>
+                            <p class="text-muted small mb-4">Listening Skills • Reading Strategies • Writing Task 1 & 2
+                                • Speaking Practice (Mock Interviews) • Vocabulary Building • Grammar Refinement • Time
+                                Management Techniques • Band Score Improvement Strategy • Full-Length Mock Tests</p>
 
                             <div class="pt-3 border-top d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center">
@@ -989,12 +795,12 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
-            <h3 class="fw-bold display-6 mb-4">Competitive Prep</h3>
+            <h3 class="fw-bold display-6 mb-4"><i class="fas fa-user-graduate me-2"></i> Competitive Prep</h3>
             <div class="row g-4 mb-5">
-                <div class="col-md-4">
+
+                <div class="col-md-4" id="cgl">
                     <div class="card course-card h-100 shadow-sm">
                         <div class="position-relative">
                             <!-- LIVE badge -->
@@ -1006,9 +812,7 @@
                                 </div>
                             </div>
 
-                            <img src="https://placehold.co/600x400/indigo/white?text=SSC+CGL" class="card-img-top"
-                                alt="Course">
-
+                            <img src="./img/courses/cc9.jpg" class="card-img-top" alt="ssc-cgl">
                         </div>
                         <div class="card-body p-4">
                             <!-- Category badge -->
@@ -1017,9 +821,9 @@
                                 PRE + MAINS
                             </span>
 
-                            <h5 class="card-title fw-bold mb-3">Course Inculde</h5>
+                            <h5 class="card-title fw-bold mb-3">SSC CGL Elite Mastery</h5>
                             <p class="text-muted small mb-4">
-                                Maths(Basic & Advance), English, Reasoning, Computer
+                                Quant • Reasoning • English • GA • Tier II Advanced Maths • Computer
                             </p>
 
                             <div class="pt-3 border-top d-flex justify-content-between align-items-center">
@@ -1036,7 +840,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-4" id="chsl">
                     <div class="card course-card h-100 shadow-sm">
                         <div class="position-relative">
                             <!-- LIVE badge -->
@@ -1048,8 +852,7 @@
                                 </div>
                             </div>
 
-                            <img src="https://placehold.co/600x400/indigo/white?text=SSC+CHSL" class="card-img-top"
-                                alt="Course">
+                            <img src="./img/courses/cc10.jpg" class="card-img-top" alt="Course">
 
                         </div>
                         <div class="card-body p-4">
@@ -1059,9 +862,9 @@
                                 Comprehensive
                             </span>
 
-                            <h5 class="card-title fw-bold mb-3">Course Inculde</h5>
+                            <h5 class="card-title fw-bold mb-3">SSC CHSL Success Program</h5>
                             <p class="text-muted small mb-4">
-                                Maths, English, Reasoning, Computer
+                                Quantitative Aptitude • Reasoning • English Language • General Awareness
                             </p>
 
                             <div class="pt-3 border-top d-flex justify-content-between align-items-center">
@@ -1090,8 +893,7 @@
                                 </div>
                             </div>
 
-                            <img src="https://placehold.co/600x400/indigo/white?text=Railway" class="card-img-top"
-                                alt="Course">
+                            <img src="./img/courses/cc11.jpg" class="card-img-top" alt="Course">
 
                         </div>
                         <div class="card-body p-4">
@@ -1101,8 +903,10 @@
                                 Comprehensive
                             </span>
 
-                            <h5 class="card-title fw-bold mb-3">Course Include</h5>
-                            <p class="text-muted small mb-4">Complete Guidance & Strategy</p>
+                            <h5 class="card-title fw-bold mb-3">SSC MTS Foundation Mastery</h5>
+                            <p class="text-muted small mb-4">
+                                Numerical Ability • Reasoning • English • General Awareness
+                            </p>
 
                             <div class="pt-3 border-top d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center">
@@ -1130,19 +934,103 @@
                                 </div>
                             </div>
 
-                            <img src="https://placehold.co/600x400/indigo/white?text=DSSSB" class="card-img-top"
-                                alt="Course">
+                            <img src="./img/courses/cc14.jpg" class="card-img-top" alt="Course">
 
                         </div>
                         <div class="card-body p-4">
                             <!-- Category badge -->
                             <span class="badge rounded-pill px-3 py-2 mb-3"
                                 style="--tw-gradient-stops: #6366f1, #a855f7, #d946ef;">
-                                Complete Paper1
+                                Comprehensive
                             </span>
 
-                            <h5 class="card-title fw-bold mb-3">Comprehensive</h5>
-                            <p class="text-muted small mb-4">TGT, PGT Complete preparation</p>
+                            <h5 class="card-title fw-bold mb-3">Railway Exam Mastery</h5>
+                            <p class="text-muted small mb-4">Mathematics • General Intelligence • General Science •
+                                General Awareness and Current Affairs</p>
+
+                            <div class="pt-3 border-top d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <div class="badge"
+                                        style="background: #eef2ff; color: #6366f1; border-radius: 6px; font-size: 0.7rem;">
+                                        10 Months
+                                    </div>
+                                </div>
+
+                                <a href="#" class="btn btn-primary btn-sm enroll-fancy">Enroll Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4" id="dsssb">
+                    <div class="card course-card h-100 shadow-sm">
+                        <div class="position-relative">
+                            <!-- LIVE badge -->
+                            <div class="position-absolute top-0 end-0 m-3 z-2">
+                                <div
+                                    class="live-badge d-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-white shadow fw-bold">
+                                    <span class="live-dot"></span>
+                                    <span class="text-danger small" style="letter-spacing: 0.6px;">LIVE BATCH</span>
+                                </div>
+                            </div>
+
+                            <img src="./img/courses/cc12.jpg" class="card-img-top" alt="Course">
+
+                        </div>
+                        <div class="card-body p-4">
+                            <!-- Category badge -->
+                            <span class="badge rounded-pill px-3 py-2 mb-3"
+                                style="--tw-gradient-stops: #6366f1, #a855f7, #d946ef;">
+                                Comprehensive
+                            </span>
+
+                            <h5 class="card-title fw-bold mb-3">DSSSB Target Mastery</h5>
+                            <p class="text-muted small mb-4">
+                                General Awareness • Reasoning • Numerical Ability • English/Hindi • Subject-Specific
+                                Paper (as per post)
+                            </p>
+
+                            <div class="pt-3 border-top d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <div class="badge"
+                                        style="background: #eef2ff; color: #6366f1; border-radius: 6px; font-size: 0.7rem;">
+                                        10 Months
+                                    </div>
+                                </div>
+
+                                <a href="#" class="btn btn-primary btn-sm enroll-fancy">Enroll Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4" id="banking">
+                    <div class="card course-card h-100 shadow-sm">
+                        <div class="position-relative">
+                            <!-- LIVE badge -->
+                            <div class="position-absolute top-0 end-0 m-3 z-2">
+                                <div
+                                    class="live-badge d-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-white shadow fw-bold">
+                                    <span class="live-dot"></span>
+                                    <span class="text-danger small" style="letter-spacing: 0.6px;">LIVE BATCH</span>
+                                </div>
+                            </div>
+
+                            <img src="./img/courses/cc13.jpg" class="card-img-top" alt="Course">
+
+                        </div>
+                        <div class="card-body p-4">
+                            <!-- Category badge -->
+                            <span class="badge rounded-pill px-3 py-2 mb-3"
+                                style="--tw-gradient-stops: #6366f1, #a855f7, #d946ef;">
+                                Comprehensive
+                            </span>
+
+                            <h5 class="card-title fw-bold mb-3">Banking Exam Excellence</h5>
+                            <p class="text-muted small mb-4">
+                                Quant • Reasoning Ability • English Language • Banking Awareness • Computer Knowledge •
+                                Data Interpretation
+                            </p>
 
                             <div class="pt-3 border-top d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center">
@@ -1168,9 +1056,8 @@
             <div class="row g-4">
                 <div class="col-lg-2 col-md-6">
                     <span class="footer-logo-text">GK ACADEMY</span>
-                    <p class="mb-4 pe-lg-4">Think Big with Us. We are committed to providing programs that go beyond
-                        traditional education, empowering individuals to realize their aspirations in the dynamic world
-                        realm.</p>
+                    <p class="mb-4 pe-lg-4">Think bigger. Learn smarter. Achieve greater — with programs designed for
+                        real world success</p>
                     <div class="social-icons mt-3">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
@@ -1185,33 +1072,33 @@
                         <div class="col-md-4">
                             <h6 class="text-white fw-bold mb-3 small text-uppercase">English Mastery</h6>
                             <ul class="footer-links">
-                                <li><a href="#">American English</a></li>
-                                <li><a href="#">British English</a></li>
-                                <li><a href="#">Business Communication</a></li>
-                                <li><a href="#">Spoken Basics</a></li>
-                                <li><a href="#">IELTS Prep</a></li>
+                                <li><a href="#accent" class="nav-link">American English</a></li>
+                                <li><a href="#accent" class="nav-link">British English</a></li>
+                                <li><a href="#business-oriented" class="nav-link">Business Communication</a></li>
+                                <li><a href="#accent" class="nav-link">Spoken Basics</a></li>
+                                <li><a href="#toefl-ielts" class="nav-link">TOEFL IELTS Prep</a></li>
                             </ul>
                         </div>
 
                         <div class="col-md-4">
                             <h6 class="text-white fw-bold mb-3 small text-uppercase">Software Engineering</h6>
                             <ul class="footer-links">
-                                <li><a href="#">MERN Full Stack Dev</a></li>
-                                <li><a href="#">Java Full Stack</a></li>
-                                <li><a href="#">Data Structures (DSA)</a></li>
-                                <li><a href="#">Python Data Science</a></li>
-                                <li><a href="#">Machine Learning / AI</a></li>
+                                <li><a href="#mern" class="nav-link">MERN Full Stack Dev</a></li>
+                                <li><a href="#frontend" class="nav-link">Frontend Developer</a></li>
+                                <li><a href="#full-stack-pro" class="nav-link">Full Stack Pro</a></li>
+                                <li><a href="#dsa" class="nav-link">Data Structures (DSA)</a></li>
+                                <li><a href="#python" class="nav-link">Python Programming</a></li>
                             </ul>
                         </div>
 
                         <div class="col-md-4">
                             <h6 class="text-white fw-bold mb-3 small text-uppercase">Competitive Exam</h6>
                             <ul class="footer-links">
-                                <li><a href="#">SSC CGL</a></li>
-                                <li><a href="#">SSC CHSL</a></li>
-                                <li><a href="#">Banking Exams</a></li>
-                                <li><a href="#">Placement Aptitude</a></li>
-                                <li><a href="#">GATE Foundations</a></li>
+                                <li><a href="#toefl-ielts" class="nav-link">TOEFL—IELTS</a></li>
+                                <li><a href="#cgl" class="nav-link">SSC CGL</a></li>
+                                <li><a href="#chsl" class="nav-link">SSC CHSL</a></li>
+                                <li><a href="#banking" class="nav-link">Banking Exams</a></li>
+                                <li><a href="#dsssb" class="nav-link">DSSSB</a></li>
                             </ul>
                         </div>
 
@@ -1223,7 +1110,7 @@
                     <ul class="footer-links contact-info">
                         <li><i class="fas fa-map-marker-alt"></i>Extension Colony, Burari, Delhi, 110084, India</li>
                         <li>
-                            <a href="tel:+918505871840"><i class="fas fa-phone"></i>+91 850 587 1840</a>
+                            <a href="tel:+917042434524"><i class="fas fa-phone"></i>+91 850 587 1840</a>
                         </li>
                         <li><i class="fas fa-envelope"></i>hr@gkacademy.com</li>
                     </ul>
@@ -1252,7 +1139,7 @@
             <span class="vertical-text">Enquiry</span>
         </a>
 
-        <a href="tel:+918505871840" class="sidebar-item" title="Call Us">
+        <a href="tel:+917042434524" class="sidebar-item" title="Call Us">
             <i class="fas fa-phone-alt"></i>
         </a>
     </div>
@@ -1297,7 +1184,8 @@
                             <label class="form-label small fw-bold">Select Interest</label>
                             <select id="userInterest" class="form-select bg-light border-0 p-3"
                                 style="border-radius: 10px;">
-                                <option selected>Software Engineering</option>
+                                <option value="none" selected disabled>Select</option>
+                                <option>Software Engineering</option>
                                 <option>English Mastery</option>
                                 <option>Competitive Exams</option>
                                 <option>Other</option>
@@ -1319,6 +1207,27 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="curriculumModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content bg-transparent border-0">
+                <div class="modal-header border-0 p-0">
+                    <button type="button" class="btn-close btn-close-white ms-auto mb-2" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0 text-center">
+                    <img src="" id="modalCurriculumImg" class="img-fluid rounded-3 shadow-lg" alt="Course Curriculum">
+                </div>
+                <div class="modal-footer border-0 justify-content-center">
+                    <a href="" id="downloadCurriculum" download class="btn btn-light fw-bold px-4">
+                        <i class="fas fa-download me-2"></i>Download Syllabus
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--     -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -1369,30 +1278,142 @@
             // Use api.whatsapp.com — more reliable for emoji right now
             const whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(text)}`;
 
-            // function toPercentEncoded(str) {
-            //   return encodeURIComponent(str).replace(/%20/g, '+'); // optional: space → +
-            // }
-            
-            // const whatsappURL = `https://wa.me/${phoneNumber}?text=${toPercentEncoded(text)}`;
-
-
             // 6. Open in a new tab
             window.open(whatsappURL, '_blank').focus();
         }
 
-        function quickChat(){
+        function quickChat(course) {
             const phoneNumber = "918505871840";
-            const msg = "I am interested in the [Course Name] and would appreciate more information regarding the curriculum and enrollment process.";
+
+            const msg = `I am interested in the ${course ?? '[COURSE NAME]'} and would appreciate more information regarding the curriculum and enrollment process.`;
             const whatsappURL = `https://wa.me/${phoneNumber}/?text=${encodeURIComponent(msg)}`;
             window.open(whatsappURL, '_blank').focus();
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const curriculumModal = document.getElementById('curriculumModal');
+
+            curriculumModal.addEventListener('show.bs.modal', function (event) {
+                // Button that triggered the modal
+                const button = event.relatedTarget;
+
+                // Extract info from data-curriculum attribute
+                const imgSrc = button.getAttribute('data-curriculum');
+
+                // Update the modal's image source
+                const modalImg = document.getElementById('modalCurriculumImg');
+                const downloadBtn = document.getElementById('downloadCurriculum');
+
+                modalImg.src = imgSrc;
+                downloadBtn.href = imgSrc; // Allows users to download the image too
+            });
+        });
+
+        window.addEventListener('scroll', function () {
+            const scrolled = window.pageYOffset;
+            // Target the image in the active slide
+            const activeImg = document.querySelector('.carousel-item.active .skewed-img');
+
+            if (activeImg) {
+                // Subtle vertical movement on scroll
+                activeImg.style.transform = `translateY(${scrolled * 0.15}px)`;
+            }
+        });
+
+        let typingTimeout;
+        let isMuted = true;
+        const typeSound = new Audio('./audio.wav');
+
+        function playKeySound() {
+            if (!isMuted) {
+                typeSound.currentTime = 0;
+                typeSound.play().catch(() => { }); // Catch browser block
+            }
+        }
+
+        function typeEffect(el, words, wIdx = 0, cIdx = 0, isDel = false, loopInfinitely = false) {
+            const currentWord = words[wIdx];
+            const speed = isDel ? 40 : 35;
+
+            // Type or Delete logic
+            if (isDel) {
+                el.textContent = currentWord.substring(0, cIdx - 1);
+                cIdx--;
+            } else {
+                el.textContent = currentWord.substring(0, cIdx + 1);
+                cIdx++;
+                // playKeySound();
+            }
+
+            // Determine state change
+            if (!isDel && cIdx === currentWord.length) {
+                // Word is fully typed
+                const isLastWord = wIdx === words.length - 1;
+
+                if (isLastWord && !loopInfinitely) {
+                    // STOP condition: Last word reached and no infinite flag
+                    el.classList.add('typing-done');
+                    return;
+                }
+
+                // Pause then start deleting
+                typingTimeout = setTimeout(() => {
+                    typeEffect(el, words, wIdx, cIdx, true, loopInfinitely);
+                }, 2000);
+
+            } else if (isDel && cIdx === 0) {
+                // Word is fully deleted: move to next
+                wIdx = (wIdx + 1) % words.length;
+                typingTimeout = setTimeout(() => {
+                    typeEffect(el, words, wIdx, cIdx, false, loopInfinitely);
+                }, 500);
+            } else {
+                // Continue current action
+                typingTimeout = setTimeout(() => {
+                    typeEffect(el, words, wIdx, cIdx, isDel, loopInfinitely);
+                }, speed);
+            }
+        }
+
+        function initTyping() {
+            clearTimeout(typingTimeout);
+            const active = document.querySelector('.carousel-item.active .typing-text');
+
+            if (active) {
+                let words = JSON.parse(active.getAttribute('data-words'));
+                active.classList.remove('typing-done');
+                active.textContent = '';
+
+                // Check for the "infinite" keyword
+                const loopInfinitely = words[words.length - 1] === "infinite";
+
+                // If infinite is present, remove it from the typing list so it doesn't get typed
+                const wordsToType = loopInfinitely ? words.slice(0, -1) : words;
+
+                typeEffect(active, wordsToType, 0, 0, false, loopInfinitely);
+            }
+        }
+
+        // --- EVENTS ---
+        document.getElementById('mainHeroCarousel').addEventListener('slid.bs.carousel', initTyping);
+        window.onload = initTyping;
+
+        // Sound Toggle
+        // document.getElementById('soundToggle').onclick = function () {
+        //     isMuted = !isMuted;
+        //     document.getElementById('soundIcon').className = isMuted ? 'fas fa-volume-mute' : 'fas fa-volume-up';
+        //     this.style.color = isMuted ? '#64748b' : '#6366f1';
+        // };
+        function sideScroll(element, direction) {
+            const container = element.closest('.category-tier').querySelector('.horizontal-scroll-row');
+            const scrollAmount = 320; // Matches card width + gap
+            if (direction === 'left') {
+                container.scrollLeft -= scrollAmount;
+            } else {
+                container.scrollLeft += scrollAmount;
+            }
         }
     </script>
 </body>
 
 </html>
-
-
-
-
-
-
