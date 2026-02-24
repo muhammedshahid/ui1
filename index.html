@@ -1459,6 +1459,35 @@
                 modalImg.src = imgSrc;
                 downloadBtn.href = imgSrc; // Allows users to download the image too
             });
+
+            const myCarousel = document.getElementById('mainHeroCarousel');
+            const carouselInstance = bootstrap.Carousel.getOrCreateInstance(myCarousel);
+
+            // 1. Handle Touch Devices (Mobile/Tablets)
+            // When a user touches the carousel, we pause it immediately.
+            myCarousel.addEventListener('touchstart', function () {
+                carouselInstance.pause();
+            }, { passive: true });
+
+            // 2. Handle Non-Touch (Desktop Mouse Interaction)
+            // We already have 'hover', but this ensures clicking a button also pauses it.
+            myCarousel.addEventListener('mousedown', function () {
+                carouselInstance.pause();
+            });
+
+            // 3. Optional: Resume only when the user stops interacting
+            // If you want it to start sliding again after the mouse leaves:
+            myCarousel.addEventListener('mouseleave', function () {
+                carouselInstance.cycle();
+            });
+
+            // For touch, we resume when the user scrolls away or finishes the touch
+            myCarousel.addEventListener('touchend', function () {
+                // We set a small delay before resuming to let them finish reading
+                setTimeout(() => {
+                    carouselInstance.cycle();
+                }, 3000);
+            }, { passive: true });
         });
 
         window.addEventListener('scroll', function () {
@@ -1569,6 +1598,3 @@
 </body>
 
 </html>
-
-
-
