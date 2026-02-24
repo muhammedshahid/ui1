@@ -5,288 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GK ACADEMY | Gateway of Knowledge</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./assests/icons/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assests/icons/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assests/icons/favicon/apple-touch-icon.png">
+    <link rel="shortcut icon" href="./assests/icons/favicon/favicon.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap"
         rel="stylesheet">
-    <link href="./style/main.css" rel="stylesheet">
-    <style>
-        .badge-meta {
-            background: #f1f5f9;
-            /* Light slate gray */
-            color: #475569;
-            border-radius: 6px;
-            font-size: 0.7rem;
-            padding: 4px 8px;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-        }
-
-        /* Specific Style for Online Mode */
-        .mode-online {
-            background: #ecfdf5;
-            /* Very light green */
-            color: #059669;
-            /* Emerald green */
-        }
-
-        /* Specific Style for Offline Mode */
-        .mode-offline {
-            background: #fff7ed;
-            /* Very light orange */
-            color: #d97706;
-            /* Amber */
-        }
-
-        /* --- Category Headings --- */
-        .category-title {
-            color: #00d4ff;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-            border-left: 4px solid #00d4ff;
-            padding-left: 15px;
-        }
-
-        /* --- The Scroll Container --- */
-        .horizontal-scroll-row {
-            display: flex;
-            overflow-x: auto;
-            gap: 20px;
-            padding: 10px 5px 30px 5px;
-            /* Bottom padding for the hover lift */
-            scrollbar-width: none;
-            /* Hides scrollbar in Firefox */
-            -ms-overflow-style: none;
-            /* Hides scrollbar in IE/Edge */
-        }
-
-        /* Hides scrollbar in Chrome/Safari/Opera */
-        .horizontal-scroll-row::-webkit-scrollbar {
-            display: none;
-        }
-
-        /* --- Card Sizing for Tiers --- */
-        .horizontal-scroll-row .showcase-card-modern {
-            flex: 0 0 280px;
-            /* Fixed width so they don't shrink */
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.4s ease;
-        }
-
-        /* Keep the same hover and icon styling from previous step */
-        .showcase-card-modern:hover {
-            transform: translateY(-8px);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(0, 212, 255, 0.4);
-        }
-
-        .card-icon {
-            font-size: 1.8rem;
-            color: #00d4ff;
-            background: rgba(0, 212, 255, 0.1);
-            width: 60px;
-            height: 60px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 15px;
-            margin-bottom: 1rem;
-        }
-
-        .showcase-card-modern h3 {
-            font-size: 1.2rem;
-            color: #fff;
-            margin-bottom: 5px;
-        }
-
-        .showcase-card-modern p {
-            font-size: 0.85rem;
-            color: #94a3b8;
-            margin: 0;
-        }
-
-        /* --- Master Showcase Section --- */
-
-        .master-showcase-modern {
-            /* Applying your specific gradient */
-
-            display: flex;
-            align-items: center;
-            color: #ffffff;
-        }
-
-        /* --- Header Typography --- */
-        .showcase-header-modern h2 {
-            font-weight: 800;
-            letter-spacing: -1px;
-            margin-bottom: 1rem;
-        }
-
-        .showcase-header-modern p {
-            color: #94a3b8;
-            /* Slate gray for elegant readability */
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* --- Glassmorphism Card Design --- */
-        .showcase-card-modern {
-            background: rgba(255, 255, 255, 0.03);
-            /* Translucent white */
-            backdrop-filter: blur(12px);
-            /* The "Glass" effect */
-            -webkit-backdrop-filter: blur(12px);
-            /* Safari Support */
-            padding: 3rem 2rem;
-            border-radius: 24px;
-            /* Deep rounded corners */
-            text-align: center;
-            height: 100%;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            /* Subtle "edge" */
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-        }
-
-        /* --- Interactive Hover State --- */
-        .showcase-card-modern:hover {
-            transform: translateY(-12px);
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(0, 212, 255, 0.4);
-            /* Cyan glow on hover */
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-        }
-
-        /* --- Icon Wrapper (The Squircle) --- */
-        .card-icon {
-            font-size: 2rem;
-            color: #00d4ff;
-            /* Electric Cyan accent */
-            background: rgba(0, 212, 255, 0.12);
-            /* Subtle glow behind icon */
-            width: 75px;
-            height: 75px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 18px;
-            /* The "Squircle" look */
-            margin-bottom: 1.5rem;
-            transition: transform 0.3s ease;
-        }
-
-        .showcase-card-modern:hover .card-icon {
-            transform: scale(1.1) rotate(5deg);
-            background: rgba(0, 212, 255, 0.2);
-        }
-
-        /* --- Card Text --- */
-        .showcase-card-modern h3 {
-            font-size: 1.35rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-            color: #f8fafc;
-        }
-
-        .showcase-card-modern p {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: #94a3b8;
-            /* Matching the header's muted tone */
-            margin-bottom: 0;
-        }
-
-        /* --- Carousel Control Adjustments (Optional) --- */
-        /* Makes the Bootstrap indicators look better with this dark theme */
-        .carousel-indicators [data-bs-target] {
-            background-color: #00d4ff;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-
-        /* --- Scroll Container Logic --- */
-        .horizontal-scroll-row {
-            display: flex;
-            overflow-x: auto;
-            gap: 20px;
-            padding: 10px 5px 30px 5px;
-
-            /* Smooth scrolling for JS and Touch */
-            scroll-behavior: smooth;
-
-            /* Snapping Logic: Makes it feel like an App */
-            scroll-snap-type: x mandatory;
-
-            /* Hide scrollbars */
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-
-        .horizontal-scroll-row::-webkit-scrollbar {
-            display: none;
-        }
-
-        .showcase-card-modern {
-            flex: 0 0 300px;
-            /* Card Width */
-            scroll-snap-align: start;
-            /* Card locks to the start of the row */
-        }
-
-        /* --- Navigation Buttons (Desktop only) --- */
-        .scroll-nav {
-            gap: 10px;
-        }
-
-        .nav-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #fff;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .nav-btn:hover {
-            background: #00d4ff;
-            color: #0f172a;
-            border-color: #00d4ff;
-        }
-
-        /* Glassmorphism Card (Refined) */
-        .showcase-card-modern {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 2.5rem 1.5rem;
-            transition: 0.4s;
-        }
-    </style>
+    <link href="./assests/style/main.css" rel="stylesheet">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light sticky-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="./img/brand/brand.png" alt="Logo" width="45" height="45" class="me-2 rounded-3">
+                <img src="./assests/img/brand/brand.png" alt="Logo" width="45" height="45" class="me-2 rounded-3">
                 <div class="d-flex flex-column">
                     <span class="brand-text lh-1" style="font-size: 1.4rem;">GK ACADEMY</span>
                     <span class="text-muted fw-medium mt-1"
@@ -474,21 +208,19 @@
                                     LEARNING</span>
                                 <h1 class="hero-title mb-4">Master <span class="gradient-span">MERN Stack</span>
                                     Development</h1>
-                                <p class="lead opacity-75 mb-5 fs-5">Accelerate your career with project-based learning
-                                    and industry expert mentorship.</p>
+                                <p class="lead opacity-75 mb-5 fs-5">Accelerate your career with project-based learning and industry expert mentorship.</p>
                                 <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
                                     <!-- <button class="btn btn-primary btn-lg" data-curriculum="./bg4.jpeg"
                                         data-bs-target="#curriculumModal" data-bs-toggle="modal">Explore
                                         Curriculum</button> -->
-                                    <button class="btn btn-primary btn-lg" onclick="quickChat('MERN Stack')">Explore
-                                        Curriculum</button>
+                                    <button class="btn btn-primary btn-lg" onclick="quickChat('MERN Stack')">Explore Curriculum</button>
                                     <button class="btn btn-outline-light btn-lg" data-bs-toggle="modal"
                                         data-bs-target="#enquiryModal" data-bs-title="MERN Stack Demo">Request
                                         Demo</button>
                                 </div>
                             </div>
                             <div class="col-lg-5 d-none d-lg-block">
-                                <img src="./img/slider/slider1.png" alt="Professional Mastery"
+                                <img src="./assests/img/slider/slider1.png" alt="Professional Mastery"
                                     class="img-fluid rounded-2 shadow-lg border border-secondary floating-img">
                             </div>
                         </div>
@@ -500,7 +232,7 @@
                 <div class="hero-slide" style="background: #0f172a;">
 
                     <div class="hero-skewed-img-wrapper d-none d-lg-block">
-                        <img src="./img/slider/slider2.png" alt="Professional Mastery" class="skewed-img">
+                        <img src="./assests/img/slider/slider2.png" alt="Professional Mastery" class="skewed-img">
                         <div class="skew-gradient-overlay"></div>
                     </div>
 
@@ -518,9 +250,9 @@
                                     From HTML to React — build fast, responsive, production-ready web interfaces.
                                 </p>
                                 <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
-                                    <button class="btn btn-glass px-4 py-3" data-curriculum="./img/slider/syllabus1.png"
+                                    <button class="btn btn-glass px-4 py-3" data-curriculum="./assests/img/syllabus/frontend.png"
                                         data-bs-target="#curriculumModal" data-bs-toggle="modal">
-                                        <i class="fas fa-file-pdf me-2"></i>Explore Curriculum
+                                        <i class="fas fa-image me-2"></i>Explore Curriculum
                                     </button>
                                     <button class="btn btn-glass-primary px-4 py-3" data-bs-toggle="modal"
                                         data-bs-target="#enquiryModal" data-bs-title="💎 Frontend Web DEV">
@@ -743,7 +475,7 @@
                                 </div>
                             </div>
 
-                            <img src="./img/courses/cc1.png" class="card-img-top" alt="mern-stack">
+                            <img src="./assests/img/courses/cc1.png" class="card-img-top" alt="mern-stack">
                             <!-- <span
                                 class="badge bg-white text-dark position-absolute top-0 end-0 m-3 shadow-sm fw-bold">₹14,999</span> -->
 
@@ -760,7 +492,9 @@
                             </div>
 
                             <h5 class="card-title fw-bold mb-3">MERN Stack Mastery</h5>
-                            <p class="text-muted small mb-4">MongoDB • Express.js • React.js • Node.js • REST APIs • Authentication (JWT) • Redux • Git & GitHub • Deployment (Vercel/Render) • Project-Based Learning</p>
+                            <p class="text-muted small mb-4">MongoDB • Express.js • React.js • Node.js • REST APIs •
+                                Authentication (JWT) • Redux • Git & GitHub • Deployment (Vercel/Render) • Project-Based
+                                Learning</p>
                             <!-- <div class="pt-3 border-top d-flex justify-content-between align-items-center">
                                 <span class="text-warning small fw-bold">★ 4.9 (2.3k reviews)</span>
                                 <a href="#" class="btn btn-primary btn-sm">Enroll</a>
@@ -792,7 +526,7 @@
                                 </div>
                             </div>
 
-                            <img src="./img/courses/cc2.png" class="card-img-top" alt="frontend-development">
+                            <img src="./assests/img/courses/cc2.png" class="card-img-top" alt="frontend-development">
 
                         </div>
                         <div class="card-body p-4">
@@ -807,7 +541,8 @@
                             </div>
 
                             <h5 class="card-title fw-bold mb-3">Frontend Developer Pro</h5>
-                            <p class="text-muted small mb-4">HTML5 • CSS3 • JavaScript (ES6+) • Responsive Design • Git & GitHub • UI/UX Fundamentals • React.js • API Integration • Deployment Basics</p>
+                            <p class="text-muted small mb-4">HTML5 • CSS3 • JavaScript (ES6+) • Responsive Design • Git
+                                & GitHub • UI/UX Fundamentals • React.js • API Integration • Deployment Basics</p>
 
                             <div class="pt-3 border-top d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center">
@@ -836,7 +571,7 @@
                                 </div>
                             </div>
 
-                            <img src="./img/courses/cc3.png" class="card-img-top" alt="dsa">
+                            <img src="./assests/img/courses/cc3.png" class="card-img-top" alt="dsa">
 
                         </div>
                         <div class="card-body p-4">
@@ -851,7 +586,9 @@
                             </div>
 
                             <h5 class="card-title fw-bold mb-3">DSA for Coding Interviews</h5>
-                            <p class="text-muted small mb-4">Time & Space Complexity • Recursion • Linked List • Stack & Queue • Trees • Binary Search Trees • Graphs • Hashing • Sorting & Searching • Dynamic Programming • Greedy Algorithms</p>
+                            <p class="text-muted small mb-4">Time & Space Complexity • Recursion • Linked List • Stack &
+                                Queue • Trees • Binary Search Trees • Graphs • Hashing • Sorting & Searching • Dynamic
+                                Programming • Greedy Algorithms</p>
 
                             <div class="pt-3 border-top d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center">
@@ -880,7 +617,7 @@
                                 </div>
                             </div>
 
-                            <img src="./img/courses/cc4.png" class="card-img-top" alt="full-stack-pro">
+                            <img src="./assests/img/courses/cc4.png" class="card-img-top" alt="full-stack-pro">
 
                         </div>
                         <div class="card-body p-4">
@@ -895,7 +632,10 @@
                             </div>
 
                             <h5 class="card-title fw-bold mb-3">Full Stack Pro Engineering</h5>
-                            <p class="text-muted small mb-4">Frontend (HTML, CSS, JavaScript, Frameworks) • Backend (Node.js / Python / Java) • APIs & Security • Databases (SQL & NoSQL) • System Design & Architecture • DevOps Fundamentals • Cloud Deployment • Testing • CI/CD • Performance Optimization</p>
+                            <p class="text-muted small mb-4">Frontend (HTML, CSS, JavaScript, Frameworks) • Backend
+                                (Node.js / Python / Java) • APIs & Security • Databases (SQL & NoSQL) • System Design &
+                                Architecture • DevOps Fundamentals • Cloud Deployment • Testing • CI/CD • Performance
+                                Optimization</p>
 
                             <div class="pt-3 border-top d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center">
@@ -924,7 +664,7 @@
                                 </div>
                             </div>
 
-                            <img src="./img/courses/cc5.png" class="card-img-top" alt="python-dev">
+                            <img src="./assests/img/courses/cc5.png" class="card-img-top" alt="python-dev">
 
                         </div>
                         <div class="card-body p-4">
@@ -941,7 +681,8 @@
                             <h5 class="card-title fw-bold mb-3">Python Developer Pro</h5>
                             <p class="text-muted small mb-4">
                                 Python Fundamentals • Data Types & Operators • Control Flow • Functions • OOP
-                                (Object-Oriented Programming) • File Handling • Exception Handling • Modules & Packages • Virtual Environments • Debugging & Best Practices
+                                (Object-Oriented Programming) • File Handling • Exception Handling • Modules & Packages
+                                • Virtual Environments • Debugging & Best Practices
                             </p>
 
                             <div class="pt-3 border-top d-flex justify-content-between align-items-center">
@@ -975,7 +716,7 @@
                                 </div>
                             </div>
 
-                            <img src="./img/courses/cc6.png" class="card-img-top" alt="american-british-accent">
+                            <img src="./assests/img/courses/cc6.png" class="card-img-top" alt="american-british-accent">
 
                         </div>
                         <div class="card-body p-4">
@@ -990,7 +731,10 @@
                             </div>
 
                             <h5 class="card-title fw-bold mb-3">American & British Accent Mastery</h5>
-                            <p class="text-muted small mb-4">Pronunciation Fundamentals • IPA Sounds • Vowel & Consonant Clarity • Word Stress & Sentence Stress • Intonation Patterns • Connected Speech • Rhythm & Fluency • Accent Neutralization • Listening Drills • Real-Life Conversation Practice</p>
+                            <p class="text-muted small mb-4">Pronunciation Fundamentals • IPA Sounds • Vowel & Consonant
+                                Clarity • Word Stress & Sentence Stress • Intonation Patterns • Connected Speech •
+                                Rhythm & Fluency • Accent Neutralization • Listening Drills • Real-Life Conversation
+                                Practice</p>
 
                             <div class="pt-3 border-top d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center">
@@ -1019,7 +763,7 @@
                                 </div>
                             </div>
 
-                            <img src="./img/courses/cc7.png" class="card-img-top" alt="business-oriented">
+                            <img src="./assests/img/courses/cc7.png" class="card-img-top" alt="business-oriented">
 
                         </div>
                         <div class="card-body p-4">
@@ -1065,7 +809,7 @@
                                 </div>
                             </div>
 
-                            <img src="./img/courses/cc8.png" class="card-img-top" alt="toefl-ielts-prep">
+                            <img src="./assests/img/courses/cc8.png" class="card-img-top" alt="toefl-ielts-prep">
 
                         </div>
                         <div class="card-body p-4">
@@ -1115,7 +859,7 @@
                                 </div>
                             </div>
 
-                            <img src="./img/courses/cc9.jpg" class="card-img-top" alt="ssc-cgl">
+                            <img src="./assests/img/courses/cc9.jpg" class="card-img-top" alt="ssc-cgl">
                         </div>
                         <div class="card-body p-4">
                             <!-- Category badge -->
@@ -1160,7 +904,7 @@
                                 </div>
                             </div>
 
-                            <img src="./img/courses/cc10.jpg" class="card-img-top" alt="Course">
+                            <img src="./assests/img/courses/cc10.jpg" class="card-img-top" alt="Course">
 
                         </div>
                         <div class="card-body p-4">
@@ -1206,7 +950,7 @@
                                 </div>
                             </div>
 
-                            <img src="./img/courses/cc11.jpg" class="card-img-top" alt="Course">
+                            <img src="./assests/img/courses/cc11.jpg" class="card-img-top" alt="Course">
 
                         </div>
                         <div class="card-body p-4">
@@ -1252,7 +996,7 @@
                                 </div>
                             </div>
 
-                            <img src="./img/courses/cc14.jpg" class="card-img-top" alt="Course">
+                            <img src="./assests/img/courses/cc14.jpg" class="card-img-top" alt="Course">
 
                         </div>
                         <div class="card-body p-4">
@@ -1267,7 +1011,8 @@
                             </div>
 
                             <h5 class="card-title fw-bold mb-3">Railways Exam Mastery</h5>
-                            <p class="text-muted small mb-4">Mathematics • General Intelligence • General Science • General Awareness and Current Affairs</p>
+                            <p class="text-muted small mb-4">Mathematics • General Intelligence • General Science •
+                                General Awareness and Current Affairs</p>
 
                             <div class="pt-3 border-top d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center">
@@ -1296,7 +1041,7 @@
                                 </div>
                             </div>
 
-                            <img src="./img/courses/cc12.jpg" class="card-img-top" alt="Course">
+                            <img src="./assests/img/courses/cc12.jpg" class="card-img-top" alt="Course">
 
                         </div>
                         <div class="card-body p-4">
@@ -1312,7 +1057,8 @@
 
                             <h5 class="card-title fw-bold mb-3">DSSSB Target Mastery</h5>
                             <p class="text-muted small mb-4">
-                                General Awareness • Reasoning • Numerical Ability • English/Hindi • Subject-Specific Paper (as per post)
+                                General Awareness • Reasoning • Numerical Ability • English/Hindi • Subject-Specific
+                                Paper (as per post)
                             </p>
 
                             <div class="pt-3 border-top d-flex justify-content-between align-items-center">
@@ -1342,7 +1088,7 @@
                                 </div>
                             </div>
 
-                            <img src="./img/courses/cc13.jpg" class="card-img-top" alt="Course">
+                            <img src="./assests/img/courses/cc13.jpg" class="card-img-top" alt="Course">
 
                         </div>
                         <div class="card-body p-4">
@@ -1358,7 +1104,8 @@
 
                             <h5 class="card-title fw-bold mb-3">Banking Exam Excellence</h5>
                             <p class="text-muted small mb-4">
-                                Quant • Reasoning Ability • English Language • Banking Awareness • Computer Knowledge • Data Interpretation
+                                Quant • Reasoning Ability • English Language • Banking Awareness • Computer Knowledge •
+                                Data Interpretation
                             </p>
 
                             <div class="pt-3 border-top d-flex justify-content-between align-items-center">
@@ -1440,7 +1187,7 @@
                     <ul class="footer-links contact-info">
                         <li><i class="fas fa-map-marker-alt"></i>Extension Colony, Burari, Delhi, 110084, India</li>
                         <li>
-                            <a href="tel:+917042434524"><i class="fas fa-phone"></i>+91 850 587 1840</a>
+                            <a href="tel:+918505871840"><i class="fas fa-phone"></i>+91 850 587 1840</a>
                         </li>
                         <li><i class="fas fa-envelope"></i>hr@gkacademy.com</li>
                     </ul>
@@ -1469,7 +1216,7 @@
             <span class="vertical-text">Enquiry</span>
         </a>
 
-        <a href="tel:+917042434524" class="sidebar-item" title="Call Us">
+        <a href="tel:+918505871840" class="sidebar-item" title="Call Us">
             <i class="fas fa-phone-alt"></i>
         </a>
     </div>
