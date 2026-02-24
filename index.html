@@ -11,6 +11,34 @@
         rel="stylesheet">
     <link href="./style/main.css" rel="stylesheet">
     <style>
+        .badge-meta {
+            background: #f1f5f9;
+            /* Light slate gray */
+            color: #475569;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            padding: 4px 8px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        /* Specific Style for Online Mode */
+        .mode-online {
+            background: #ecfdf5;
+            /* Very light green */
+            color: #059669;
+            /* Emerald green */
+        }
+
+        /* Specific Style for Offline Mode */
+        .mode-offline {
+            background: #fff7ed;
+            /* Very light orange */
+            color: #d97706;
+            /* Amber */
+        }
+
         /* --- Category Headings --- */
         .category-title {
             color: #00d4ff;
@@ -309,7 +337,8 @@
 
                         <div class="showcase-header-modern text-center mb-5">
                             <h2 class="display-4 fw-bold text-white">Our Course Catalog</h2>
-                            <p class="lead" style="color: #94a3b8;">Career focused programs crafted for real world excellence
+                            <p class="lead" style="color: #94a3b8;">Career focused programs crafted for real world
+                                excellence
                             </p>
                         </div>
 
@@ -356,7 +385,8 @@
 
                         <div class="category-tier mb-5">
                             <div class="d-flex justify-content-between align-items-end mb-3">
-                                <h4 class="category-title mb-0"><i class="fas fa-language me-2"></i> English Language</h4>
+                                <h4 class="category-title mb-0"><i class="fas fa-language me-2"></i> English Language
+                                </h4>
                                 <div class="scroll-nav d-none d-md-flex">
                                     <button class="nav-btn prev" onclick="sideScroll(this, 'left')"><i
                                             class="fas fa-chevron-left"></i></button>
@@ -386,7 +416,8 @@
 
                         <div class="category-tier mb-5">
                             <div class="d-flex justify-content-between align-items-end mb-3">
-                                <h4 class="category-title mb-0"><i class="fas fa-user-graduate me-2"></i> Competitive Exams</h4>
+                                <h4 class="category-title mb-0"><i class="fas fa-user-graduate me-2"></i> Competitive
+                                    Exams</h4>
                                 <div class="scroll-nav d-none d-md-flex">
                                     <button class="nav-btn prev" onclick="sideScroll(this, 'left')"><i
                                             class="fas fa-chevron-left"></i></button>
@@ -411,7 +442,7 @@
                                     <h3>SSC MTS</h3>
                                     <p>Real—time Practice</p>
                                 </article>
-                                 <article class="showcase-card-modern">
+                                <article class="showcase-card-modern">
                                     <div class="card-icon"><i class="fas fa-landmark"></i></div>
                                     <h3>Banking</h3>
                                     <p>Time Management</p>
@@ -433,7 +464,7 @@
                 </section>
             </div>
 
-             <div class="carousel-item">
+            <div class="carousel-item">
                 <div class="hero-slide" style="background: var(--dark-navy);">
                     <div class="container">
                         <div class="row h-100 align-items-start align-items-lg-center text-center text-lg-start">
@@ -680,11 +711,13 @@
 
         </div>
 
-        <button class="carousel-control-prev d-none d-md-flex" type="button" data-bs-target="#mainHeroCarousel" data-bs-slide="prev">
+        <button class="carousel-control-prev d-none d-md-flex" type="button" data-bs-target="#mainHeroCarousel"
+            data-bs-slide="prev">
             <span class="carousel-control-prev-icon"></span>
         </button>
 
-        <button class="carousel-control-next d-none d-md-flex" type="button" data-bs-target="#mainHeroCarousel" data-bs-slide="next">
+        <button class="carousel-control-next d-none d-md-flex" type="button" data-bs-target="#mainHeroCarousel"
+            data-bs-slide="next">
             <span class="carousel-control-next-icon"></span>
         </button>
     </div>
@@ -722,10 +755,12 @@
                                 Web Development
                             </span>
 
+                            <div class="badge badge-meta mode-online">
+                                Online/Offline
+                            </div>
+
                             <h5 class="card-title fw-bold mb-3">MERN Stack Mastery</h5>
-                            <p class="text-muted small mb-4">MongoDB • Express.js • React.js • Node.js • REST APIs •
-                                Authentication (JWT) • Redux • Git & GitHub • Deployment (Vercel/Render) • Project-Based
-                                Learning</p>
+                            <p class="text-muted small mb-4">MongoDB • Express.js • React.js • Node.js • REST APIs • Authentication (JWT) • Redux • Git & GitHub • Deployment (Vercel/Render) • Project-Based Learning</p>
                             <!-- <div class="pt-3 border-top d-flex justify-content-between align-items-center">
                                 <span class="text-warning small fw-bold">★ 4.9 (2.3k reviews)</span>
                                 <a href="#" class="btn btn-primary btn-sm">Enroll</a>
@@ -738,7 +773,8 @@
                                         8 Months</div>
                                 </div>
                                 <!-- <a href="#" class="btn btn-primary btn-sm">Enroll</a> -->
-                                <a href="#" class="btn btn-primary btn-sm enroll-fancy">Enroll Now</a>
+                                <a href="#" class="btn btn-primary btn-sm enroll-fancy"
+                                    onclick="enrollChat('MERN Stack')">Enroll Now</a>
                             </div>
                         </div>
                     </div>
@@ -766,9 +802,12 @@
                                 Web Development
                             </span>
 
+                            <div class="badge badge-meta mode-online">
+                                Online/Offline
+                            </div>
+
                             <h5 class="card-title fw-bold mb-3">Frontend Developer Pro</h5>
-                            <p class="text-muted small mb-4">HTML5 • CSS3 • JavaScript (ES6+) • Responsive Design • Git
-                                & GitHub • UI/UX Fundamentals • React.js • API Integration • Deployment Basics</p>
+                            <p class="text-muted small mb-4">HTML5 • CSS3 • JavaScript (ES6+) • Responsive Design • Git & GitHub • UI/UX Fundamentals • React.js • API Integration • Deployment Basics</p>
 
                             <div class="pt-3 border-top d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center">
@@ -778,7 +817,8 @@
                                     </div>
                                 </div>
 
-                                <a href="#" class="btn btn-primary btn-sm enroll-fancy">Enroll Now</a>
+                                <a href="#" class="btn btn-primary btn-sm enroll-fancy"
+                                    onclick="enrollChat('Frontend Developer Pro')">Enroll Now</a>
                             </div>
                         </div>
                     </div>
@@ -806,10 +846,12 @@
                                 Problem Solving
                             </span>
 
+                            <div class="badge badge-meta mode-online">
+                                Online/Offline
+                            </div>
+
                             <h5 class="card-title fw-bold mb-3">DSA for Coding Interviews</h5>
-                            <p class="text-muted small mb-4">Time & Space Complexity • Recursion • Linked List • Stack &
-                                Queue • Trees • Binary Search Trees • Graphs • Hashing • Sorting & Searching • Dynamic
-                                Programming • Greedy Algorithms</p>
+                            <p class="text-muted small mb-4">Time & Space Complexity • Recursion • Linked List • Stack & Queue • Trees • Binary Search Trees • Graphs • Hashing • Sorting & Searching • Dynamic Programming • Greedy Algorithms</p>
 
                             <div class="pt-3 border-top d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center">
@@ -819,7 +861,8 @@
                                     </div>
                                 </div>
 
-                                <a href="#" class="btn btn-primary btn-sm enroll-fancy">Enroll Now</a>
+                                <a href="#" class="btn btn-primary btn-sm enroll-fancy"
+                                    onclick="enrollChat('Data Structure & Algorithms')">Enroll Now</a>
                             </div>
                         </div>
                     </div>
@@ -847,11 +890,12 @@
                                 Software Engineer
                             </span>
 
+                            <div class="badge badge-meta mode-online">
+                                Online/Offline
+                            </div>
+
                             <h5 class="card-title fw-bold mb-3">Full Stack Pro Engineering</h5>
-                            <p class="text-muted small mb-4">Frontend (HTML, CSS, JavaScript, Frameworks) • Backend
-                                (Node.js / Python / Java) • APIs & Security • Databases (SQL & NoSQL) • System Design &
-                                Architecture • DevOps Fundamentals • Cloud Deployment • Testing • CI/CD • Performance
-                                Optimization</p>
+                            <p class="text-muted small mb-4">Frontend (HTML, CSS, JavaScript, Frameworks) • Backend (Node.js / Python / Java) • APIs & Security • Databases (SQL & NoSQL) • System Design & Architecture • DevOps Fundamentals • Cloud Deployment • Testing • CI/CD • Performance Optimization</p>
 
                             <div class="pt-3 border-top d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center">
@@ -861,7 +905,8 @@
                                     </div>
                                 </div>
 
-                                <a href="#" class="btn btn-primary btn-sm enroll-fancy">Enroll Now</a>
+                                <a href="#" class="btn btn-primary btn-sm enroll-fancy"
+                                    onclick="enrollChat('Full Stack Pro')">Enroll Now</a>
                             </div>
                         </div>
                     </div>
@@ -889,11 +934,14 @@
                                 Python
                             </span>
 
+                            <div class="badge badge-meta mode-online">
+                                Online/Offline
+                            </div>
+
                             <h5 class="card-title fw-bold mb-3">Python Developer Pro</h5>
                             <p class="text-muted small mb-4">
                                 Python Fundamentals • Data Types & Operators • Control Flow • Functions • OOP
-                                (Object-Oriented Programming) • File Handling • Exception Handling • Modules & Packages
-                                • Virtual Environments • Debugging & Best Practices
+                                (Object-Oriented Programming) • File Handling • Exception Handling • Modules & Packages • Virtual Environments • Debugging & Best Practices
                             </p>
 
                             <div class="pt-3 border-top d-flex justify-content-between align-items-center">
@@ -904,7 +952,8 @@
                                     </div>
                                 </div>
 
-                                <a href="#" class="btn btn-primary btn-sm enroll-fancy">Enroll Now</a>
+                                <a href="#" class="btn btn-primary btn-sm enroll-fancy"
+                                    onclick="enrollChat('Python Programming')">Enroll Now</a>
                             </div>
                         </div>
                     </div>
@@ -936,11 +985,12 @@
                                 Beginner to Advance
                             </span>
 
+                            <div class="badge badge-meta mode-online">
+                                Online/Offline
+                            </div>
+
                             <h5 class="card-title fw-bold mb-3">American & British Accent Mastery</h5>
-                            <p class="text-muted small mb-4">Pronunciation Fundamentals • IPA Sounds • Vowel & Consonant
-                                Clarity • Word Stress & Sentence Stress • Intonation Patterns • Connected Speech •
-                                Rhythm & Fluency • Accent Neutralization • Listening Drills • Real-Life Conversation
-                                Practice</p>
+                            <p class="text-muted small mb-4">Pronunciation Fundamentals • IPA Sounds • Vowel & Consonant Clarity • Word Stress & Sentence Stress • Intonation Patterns • Connected Speech • Rhythm & Fluency • Accent Neutralization • Listening Drills • Real-Life Conversation Practice</p>
 
                             <div class="pt-3 border-top d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center">
@@ -950,7 +1000,8 @@
                                     </div>
                                 </div>
 
-                                <a href="#" class="btn btn-primary btn-sm enroll-fancy">Enroll Now</a>
+                                <a href="#" class="btn btn-primary btn-sm enroll-fancy"
+                                    onclick="enrollChat('American & British English')">Enroll Now</a>
                             </div>
                         </div>
                     </div>
@@ -978,6 +1029,10 @@
                                 Business Oriented Skills
                             </span>
 
+                            <div class="badge badge-meta mode-online">
+                                Online/Offline
+                            </div>
+
                             <h5 class="card-title fw-bold mb-3">Professional Communication Pro</h5>
                             <p class="text-muted small mb-4">Professional Email Writing • Corporate Vocabulary •
                                 Presentation Skills • Public Speaking • Meeting Etiquette • Interview Skills •
@@ -991,7 +1046,8 @@
                                     </div>
                                 </div>
 
-                                <a href="#" class="btn btn-primary btn-sm enroll-fancy">Enroll Now</a>
+                                <a href="#" class="btn btn-primary btn-sm enroll-fancy"
+                                    onclick="enrollChat('Professional Communication Pro')">Enroll Now</a>
                             </div>
                         </div>
                     </div>
@@ -1019,6 +1075,10 @@
                                 Beginner to Advance
                             </span>
 
+                            <div class="badge badge-meta mode-online">
+                                Online/Offline
+                            </div>
+
                             <h5 class="card-title fw-bold mb-3">TOEFL & IELTS Success Program</h5>
                             <p class="text-muted small mb-4">Listening Skills • Reading Strategies • Writing Task 1 & 2
                                 • Speaking Practice (Mock Interviews) • Vocabulary Building • Grammar Refinement • Time
@@ -1032,7 +1092,8 @@
                                     </div>
                                 </div>
 
-                                <a href="#" class="btn btn-primary btn-sm enroll-fancy">Enroll Now</a>
+                                <a href="#" class="btn btn-primary btn-sm enroll-fancy"
+                                    onclick="enrollChat('TOEFL-IELTS')">Enroll Now</a>
                             </div>
                         </div>
                     </div>
@@ -1060,8 +1121,12 @@
                             <!-- Category badge -->
                             <span class="badge rounded-pill px-3 py-2 mb-3"
                                 style="--tw-gradient-stops: #6366f1, #a855f7, #d946ef;">
-                                PRE + MAINS
+                                PRE<i class="fas fa-plus"></i> MAINS
                             </span>
+
+                            <div class="badge badge-meta mode-online">
+                                Online/Offline
+                            </div>
 
                             <h5 class="card-title fw-bold mb-3">SSC CGL Elite Mastery</h5>
                             <p class="text-muted small mb-4">
@@ -1076,7 +1141,8 @@
                                     </div>
                                 </div>
 
-                                <a href="#" class="btn btn-primary btn-sm enroll-fancy">Enroll Now</a>
+                                <a href="#" class="btn btn-primary btn-sm enroll-fancy"
+                                    onclick="enrollChat('SSC CGL')">Enroll Now</a>
                             </div>
                         </div>
                     </div>
@@ -1104,6 +1170,10 @@
                                 Comprehensive
                             </span>
 
+                            <div class="badge badge-meta mode-online">
+                                Online/Offline
+                            </div>
+
                             <h5 class="card-title fw-bold mb-3">SSC CHSL Success Program</h5>
                             <p class="text-muted small mb-4">
                                 Quantitative Aptitude • Reasoning • English Language • General Awareness
@@ -1117,7 +1187,8 @@
                                     </div>
                                 </div>
 
-                                <a href="#" class="btn btn-primary btn-sm enroll-fancy">Enroll Now</a>
+                                <a href="#" class="btn btn-primary btn-sm enroll-fancy"
+                                    onclick="enrollChat('SSC CHSL')">Enroll Now</a>
                             </div>
                         </div>
                     </div>
@@ -1145,6 +1216,10 @@
                                 Comprehensive
                             </span>
 
+                            <div class="badge badge-meta mode-online">
+                                Online/Offline
+                            </div>
+
                             <h5 class="card-title fw-bold mb-3">SSC MTS Foundation Mastery</h5>
                             <p class="text-muted small mb-4">
                                 Numerical Ability • Reasoning • English • General Awareness
@@ -1158,7 +1233,8 @@
                                     </div>
                                 </div>
 
-                                <a href="#" class="btn btn-primary btn-sm enroll-fancy">Enroll Now</a>
+                                <a href="#" class="btn btn-primary btn-sm enroll-fancy"
+                                    onclick="enrollChat('SSC MTS')">Enroll Now</a>
                             </div>
                         </div>
                     </div>
@@ -1186,9 +1262,12 @@
                                 Comprehensive
                             </span>
 
-                            <h5 class="card-title fw-bold mb-3">Railway Exam Mastery</h5>
-                            <p class="text-muted small mb-4">Mathematics • General Intelligence • General Science •
-                                General Awareness and Current Affairs</p>
+                            <div class="badge badge-meta mode-online">
+                                Online/Offline
+                            </div>
+
+                            <h5 class="card-title fw-bold mb-3">Railways Exam Mastery</h5>
+                            <p class="text-muted small mb-4">Mathematics • General Intelligence • General Science • General Awareness and Current Affairs</p>
 
                             <div class="pt-3 border-top d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center">
@@ -1198,7 +1277,8 @@
                                     </div>
                                 </div>
 
-                                <a href="#" class="btn btn-primary btn-sm enroll-fancy">Enroll Now</a>
+                                <a href="#" class="btn btn-primary btn-sm enroll-fancy"
+                                    onclick="enrollChat('Railways Exam')">Enroll Now</a>
                             </div>
                         </div>
                     </div>
@@ -1226,10 +1306,13 @@
                                 Comprehensive
                             </span>
 
+                            <div class="badge badge-meta mode-online">
+                                Online/Offline
+                            </div>
+
                             <h5 class="card-title fw-bold mb-3">DSSSB Target Mastery</h5>
                             <p class="text-muted small mb-4">
-                                General Awareness • Reasoning • Numerical Ability • English/Hindi • Subject-Specific
-                                Paper (as per post)
+                                General Awareness • Reasoning • Numerical Ability • English/Hindi • Subject-Specific Paper (as per post)
                             </p>
 
                             <div class="pt-3 border-top d-flex justify-content-between align-items-center">
@@ -1240,7 +1323,8 @@
                                     </div>
                                 </div>
 
-                                <a href="#" class="btn btn-primary btn-sm enroll-fancy">Enroll Now</a>
+                                <a href="#" class="btn btn-primary btn-sm enroll-fancy"
+                                    onclick="enrollChat('DSSSB Exams')">Enroll Now</a>
                             </div>
                         </div>
                     </div>
@@ -1268,10 +1352,13 @@
                                 Comprehensive
                             </span>
 
+                            <div class="badge badge-meta mode-online">
+                                Online/Offline
+                            </div>
+
                             <h5 class="card-title fw-bold mb-3">Banking Exam Excellence</h5>
                             <p class="text-muted small mb-4">
-                                Quant • Reasoning Ability • English Language • Banking Awareness • Computer Knowledge •
-                                Data Interpretation
+                                Quant • Reasoning Ability • English Language • Banking Awareness • Computer Knowledge • Data Interpretation
                             </p>
 
                             <div class="pt-3 border-top d-flex justify-content-between align-items-center">
@@ -1282,7 +1369,8 @@
                                     </div>
                                 </div>
 
-                                <a href="#" class="btn btn-primary btn-sm enroll-fancy">Enroll Now</a>
+                                <a href="#" class="btn btn-primary btn-sm enroll-fancy"
+                                    onclick="enrollChat('Banking Exam')">Enroll Now</a>
                             </div>
                         </div>
                     </div>
@@ -1521,6 +1609,14 @@
             const whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(text)}`;
 
             // 6. Open in a new tab
+            window.open(whatsappURL, '_blank').focus();
+        }
+
+        function enrollChat(course) {
+            const phoneNumber = "918505871840";
+
+            const msg = `Hello, I am interested in the ${course ?? '[COURSE NAME]'} and would like more details about the syllabus, fees, and enrollment procedure.`;
+            const whatsappURL = `https://wa.me/${phoneNumber}/?text=${encodeURIComponent(msg)}`;
             window.open(whatsappURL, '_blank').focus();
         }
 
