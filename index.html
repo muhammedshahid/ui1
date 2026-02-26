@@ -406,12 +406,12 @@
                                         <div class="exam-grid">
                                             <div class="exam-card" style="--i: 1;">SSC CGL</div>
                                             <div class="exam-card" style="--i: 2;">SSC CHSL</div>
-                                            <div class="exam-card" style="--i: 3;">DSSSB TGT</div>
-                                            <div class="exam-card" style="--i: 4;">DSSSB PGT</div>
-                                            <div class="exam-card" style="--i: 5;">Railway NTPC</div>
-                                            <div class="exam-card" style="--i: 6;">Banking Exams</div>
-                                            <div class="exam-card" style="--i: 7;">SSC MTS</div>
-                                            <div class="exam-card" style="--i: 8;">SSC GD</div>
+                                            <div class="exam-card" style="--i: 3;">SSC GD</div>
+                                            <div class="exam-card" style="--i: 4;">SSC MTS</div>
+                                            <div class="exam-card" style="--i: 5;">DSSSB TGT</div>
+                                            <div class="exam-card" style="--i: 6;">DSSSB PGT</div>
+                                            <div class="exam-card" style="--i: 7;">Railway NTPC</div>
+                                            <div class="exam-card" style="--i: 8;">Banking Exams</div>                                            
                                             <div class="exam-card" style="--i: 9;">IBPS PO</div>
                                             <div class="exam-card" style="--i: 10;">IBPS Clerk</div>
                                         </div>
@@ -1378,6 +1378,7 @@
     <script>
         const phoneNumber = "918595447885";
         const enquiryModal = document.getElementById('enquiryModal');
+
         enquiryModal.addEventListener('show.bs.modal', function (event) {
             const button = event.relatedTarget;
             const title = button.getAttribute('data-bs-title') || "🚀 Quick Enquiry";
@@ -1389,6 +1390,7 @@
             // Set the hidden input value for WhatsApp tracking
             document.getElementById('sourceTitle').value = title;
         });
+
         function sendToWhatsApp() {
             const source = document.getElementById('sourceTitle').value;
             const name = document.getElementById('userName').value;
@@ -1410,11 +1412,9 @@
                 "*Interested In:* " + interest + "\n" +
                 "*Message:* " + message;
 
-            // 5. Create the WhatsApp Link
-            // Use api.whatsapp.com — more reliable for emoji right now
+            // api.whatsapp.com — more reliable for emoji
             const whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(text)}`;
 
-            // 6. Open in a new tab
             window.open(whatsappURL, '_blank').focus();
         }
 
@@ -1452,26 +1452,26 @@
             const carouselInstance = bootstrap.Carousel.getOrCreateInstance(myCarousel);
 
             // 1. Handle Touch Devices (Mobile/Tablets)
-            // When a user touches the carousel, we pause it immediately.
+            // When a user touches the carousel, pause it immediately
             myCarousel.addEventListener('touchstart', function () {
                 carouselInstance.pause();
             }, { passive: true });
 
             // 2. Handle Non-Touch (Desktop Mouse Interaction)
-            // We already have 'hover', but this ensures clicking a button also pauses it.
+            // already have 'hover', but this ensures clicking a button also pauses it.
             myCarousel.addEventListener('mousedown', function () {
                 carouselInstance.pause();
             });
 
             // 3. Optional: Resume only when the user stops interacting
-            // If you want it to start sliding again after the mouse leaves:
+
             myCarousel.addEventListener('mouseleave', function () {
                 carouselInstance.cycle();
             });
 
-            // For touch, we resume when the user scrolls away or finishes the touch
+            // For touch, resume when the user scrolls away or finishes the touch
             myCarousel.addEventListener('touchend', function () {
-                // We set a small delay before resuming to let them finish reading
+                // set a small delay before resuming to let them finish reading
                 setTimeout(() => {
                     carouselInstance.cycle();
                 }, 3000);
@@ -1480,7 +1480,6 @@
 
         window.addEventListener('scroll', function () {
             const scrolled = window.pageYOffset;
-            // Target the image in the active slide
             const activeImg = document.querySelector('.carousel-item.active .skewed-img');
 
             if (activeImg) {
